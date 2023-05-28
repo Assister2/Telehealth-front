@@ -1,0 +1,351 @@
+<div class="page-wrapper">
+	<div class="content container-fluid">
+					
+		<!-- Page Header -->
+		<div class="page-header">
+			<div class="row">
+				<div class="col-sm-12">
+					<h3 class="page-title">Invoice Reports</h3>
+				</div>
+			</div>
+		</div>
+		<!-- /Page Header -->
+
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="card">
+					<div class="card-header border-bottom-0">
+						<div class="row align-items-center">
+							<div class="col">
+								<h5 class="card-title">Invoice Reports List</h5>
+							</div>
+							<div class="col-auto custom-list d-flex">
+								<div class="form-custom me-2">
+									<div id="tableSearch"  class="dataTables_wrapper"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="card-body p-0">
+						<div class="table-responsive">
+							<table datatable [dtOptions]="dtOptions" class="datatable table table-borderless hover-table" id="data-table">
+								<thead class="thead-light">
+									<tr>
+										<th>Invoice Number</th>
+										<th>Medicine Name</th>
+										<th>Total Amount</th>
+										<th>Created Date</th>
+										<th class="text-center">Status</th>
+										<th class="text-end">Actions</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td><a [routerLink]="'/pharmacy-admin/reports/view'">#IN0001</a></td>
+										<td>
+											<h2 class="table-avatar">
+												<a href="javascript:void(0)"><img class="avatar avatar-img" src="assets/admin/img/products/product1.jpg" alt="User Image"> Abilify</a>
+											</h2>
+										</td>
+										<td>$100.00</td>
+										<td>9 Sep 2019</td>
+										<td class="text-center">
+											<span class="badge rounded-pill bg-success inv-badge">Paid</span>
+										</td>
+										<td class="text-end">
+											<div class="actions">
+												<a class="text-black" data-bs-toggle="modal" href="#edit_specialities_details">
+													<i class="feather-edit-3 me-1"></i> Edit
+												</a>
+												<a  data-bs-toggle="modal" href="#delete_modal" class="text-danger">
+													<i class="feather-trash-2 me-1"></i> Delete
+												</a>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><a [routerLink]="'/pharmacy-admin/reports/view'">#IN0002</a></td>
+										<td>
+											<h2 class="table-avatar">
+												<a href="javascript:void(0)"><img class="avatar avatar-img" src="assets/admin/img/products/product2.jpg" alt="User Image"> Actamin</a>
+											</h2>
+										</td>
+										<td>$200.00</td>
+										<td>29 Oct 2019</td>
+										<td class="text-center">
+											<span class="badge rounded-pill bg-success inv-badge">Paid</span>
+										</td>
+										<td class="text-end">
+											<div class="actions">
+												<a class="text-black" data-bs-toggle="modal" href="#edit_specialities_details">
+													<i class="feather-edit-3 me-1"></i> Edit
+												</a>
+												<a  data-bs-toggle="modal" href="#delete_modal" class="text-danger">
+													<i class="feather-trash-2 me-1"></i> Delete
+												</a>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><a [routerLink]="'/pharmacy-admin/reports/view'">#IN0003</a></td>
+										<td>
+											<h2 class="table-avatar">
+												<a href="javascript:void(0)"><img class="avatar avatar-img" src="assets/admin/img/products/product3.jpg" alt="User Image"> Actamin</a>
+											</h2>
+										</td>
+										<td>$250.00</td>
+										<td>25 Sep 2019</td>
+										<td class="text-center">
+											<span class="badge rounded-pill bg-danger inv-badge">Pending</span>
+										</td>
+										<td class="text-end">
+											<div class="actions">
+												<a class="text-black" data-bs-toggle="modal" href="#edit_specialities_details">
+													<i class="feather-edit-3 me-1"></i> Edit
+												</a>
+												<a  data-bs-toggle="modal" href="#delete_modal" class="text-danger">
+													<i class="feather-trash-2 me-1"></i> Delete
+												</a>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><a [routerLink]="'/pharmacy-admin/reports/view'">#IN0004</a></td>
+										<td>
+											<h2 class="table-avatar">
+												<a href="javascript:void(0)"><img class="avatar avatar-img" src="assets/admin/img/products/product4.jpg" alt="User Image"> Abilify</a>
+											</h2>
+										</td>
+										<td>$150.00</td>
+										<td>9 Oct 2019</td>
+										<td class="text-center">
+											<span class="badge rounded-pill bg-warning inv-badge">Unpaid</span>
+										</td>
+										<td class="text-end">
+											<div class="actions">
+												<a class="text-black" data-bs-toggle="modal" href="#edit_specialities_details">
+													<i class="feather-edit-3 me-1"></i> Edit
+												</a>
+												<a  data-bs-toggle="modal" href="#delete_modal" class="text-danger">
+													<i class="feather-trash-2 me-1"></i> Delete
+												</a>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><a [routerLink]="'/pharmacy-admin/reports/view'">#IN0005</a></td>
+										<td>
+											<h2 class="table-avatar">
+												<a href="javascript:void(0)"><img class="avatar avatar-img" src="assets/admin/img/products/product5.jpg" alt="User Image"> Actamin</a>
+											</h2>
+										</td>
+										<td>$350.00</td>
+										<td>19 Nov 2019</td>
+										<td class="text-center">
+											<span class="badge rounded-pill bg-success inv-badge">Paid</span>
+										</td>
+										<td class="text-end">
+											<div class="actions">
+												<a class="text-black" data-bs-toggle="modal" href="#edit_specialities_details">
+													<i class="feather-edit-3 me-1"></i> Edit
+												</a>
+												<a  data-bs-toggle="modal" href="#delete_modal" class="text-danger">
+													<i class="feather-trash-2 me-1"></i> Delete
+												</a>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td><a [routerLink]="'/pharmacy-admin/reports/view'">#IN0006</a></td>
+										<td>
+											<h2 class="table-avatar">
+												<a href="javascript:void(0)"><img class="avatar avatar-img" src="assets/admin/img/products/product6.jpg" alt="User Image"> Actamin</a>
+											</h2>
+										</td>
+										<td>$300.00</td>
+										<td>12 Oct 2019</td>
+										<td class="text-center">
+											<span class="badge rounded-pill bg-success inv-badge">Paid</span>
+										</td>
+										<td class="text-end">
+											<div class="actions">
+												<a class="text-black" data-bs-toggle="modal" href="#edit_specialities_details">
+													<i class="feather-edit-3 me-1"></i> Edit
+												</a>
+												<a  data-bs-toggle="modal" href="#delete_modal" class="text-danger">
+													<i class="feather-trash-2 me-1"></i> Delete
+												</a>
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div id="tablepagination"  class="dataTables_wrapper"></div>
+			</div>			
+		</div>
+	</div>
+</div>
+<!-- /Page Wrapper -->
+<!-- Edit Details Modal -->
+<div class="modal fade" id="edit_specialities_details" aria-hidden="true" role="dialog">
+	<div class="modal-dialog modal-dialog-centered" role="document" >
+		<div class="modal-content doctor-profile">
+			<div class="modal-header">
+				<h5 class="modal-title">Edit Invoice Report</h5>
+				<button type="button" class="close-btn" data-bs-dismiss="modal" aria-label="Close"><i class="feather-x-circle"></i></button>
+			</div>
+			<div class="modal-body">
+				<form>
+					<div class="row form-row">
+						<div class="col-12 col-sm-6">
+							<div class="form-group">
+								<label>Invoice Number</label>
+								<input type="text" class="form-control">
+							</div>
+						</div>
+						<div class="col-12 col-sm-6">
+							<div class="form-group">
+								<label>Medicine Image</label>
+								<div class="custom-file" id="customFile2">
+									<label class="custom-file-upload">
+										<input type="file" id="site_logo1" name="site_logo1">
+										<span class="file-upload-text"></span>
+										<span class="change-user">
+											Choose File
+										</span>
+									</label>
+								</div>
+							</div>
+						</div>
+						<div class="col-12 col-sm-6">
+							<div class="form-group">
+								<label>Medicine Name</label>
+								<input type="text" class="form-control">
+							</div>
+						</div>
+						<div class="col-12 col-sm-6">
+							<div class="form-group">
+								<label>Total Amount</label>
+								<input type="text"  class="form-control">
+							</div>
+						</div>
+						<div class="col-12 col-sm-6">
+							<div class="form-group">
+								<label>Status <span class="text-danger">*</span></label>
+								<select class="form-select form-control" name="category" required=""> 
+									<option value="1" selected="selected">Paid</option>
+									<option value="2">Unpaid</option>
+									<option value="3">Pending</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-12 col-sm-6">
+							<div class="form-group">
+								<label>Created Date</label>
+								<input type="text"  class="form-control">
+							</div>
+						</div>
+						
+					</div>
+					<button type="submit" class="btn btn-primary w-100">Save Changes</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /Edit Details Modal -->
+
+<!-- Delete Modal -->
+<div class="modal fade" id="delete_modal" aria-hidden="true" role="dialog">
+	<div class="modal-dialog modal-dialog-centered" role="document" >
+		<div class="modal-content doctor-profile">
+			<div class="modal-header border-bottom-0 justify-content-end">
+				<button type="button" class="close-btn" data-bs-dismiss="modal" aria-label="Close"><i class="feather-x-circle"></i></button>
+			</div>
+			<div class="modal-body">
+				<div class="delete-wrap text-center">
+					<div class="del-icon"><i class="feather-x-circle"></i></div>
+					<h2>Sure you Want to delete</h2>
+					<p>“Invoice Report”</p>
+					<div class="submit-section">
+						<a href="javascript:void(0)" class="btn btn-success me-2">Yes</a>
+						<a href="javascript:void(0)" class="btn btn-danger" data-bs-dismiss="modal">No</a>
+					</div>								
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /Delete Modal -->
+<ng-template #edittemplate>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Edit Invoice</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body text-center">
+        <form>
+			<div class="row form-row">
+				<div class="col-12 col-sm-6">
+					<div class="form-group">
+						<label>Invoice Number</label>
+						<input type="text" class="form-control">
+					</div>
+				</div>
+				<div class="col-12 col-sm-6">
+					<div class="form-group">
+						<label>Medicine Image</label>
+						<input type="file"  class="form-control">
+					</div>
+				</div>
+				<div class="col-12 col-sm-6">
+					<div class="form-group">
+						<label>Medicine Name</label>
+						<input type="text" class="form-control">
+					</div>
+				</div>
+				<div class="col-12 col-sm-6">
+					<div class="form-group">
+						<label>Total Amount</label>
+						<input type="text"  class="form-control">
+					</div>
+				</div>
+				<div class="col-12 col-sm-6">
+					<div class="form-group">
+						<label>Status <span class="text-danger">*</span></label>
+						<select class="form-control select form-select" name="category" required=""> 
+							<option value="1" selected="selected">Paid</option>
+							<option value="2">Unpaid</option>
+							<option value="3">Pending</option>
+						</select>
+					</div>
+				</div>
+				<div class="col-12 col-sm-6">
+					<div class="form-group">
+						<label>Created Date</label>
+						<input type="text"  class="form-control">
+					</div>
+				</div>				
+			</div>
+		</form>
+        <div style="margin-top:25px">
+            <button type="button" class="btn btn-success si_accept_confirm" id="btn-yes" (click)="update()" >Update</button>
+            <button type="button" class="btn btn-danger si_accept_cancel" >Cancel</button>
+          </div>
+    </div>
+</ng-template>
+<ng-template #delete>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Delete</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body text-center">
+		<p id="acc_msg">Are you sure you want to delete?</p>
+      <div style="margin-top:25px">
+        <button type="button" class="btn btn-success si_accept_confirm" id="btn-yes" (click)="deleteReport()" >Yes</button>
+        <button type="button" class="btn btn-danger si_accept_cancel"  >No</button>
+      </div>
+    </div>
+</ng-template>

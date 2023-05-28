@@ -1,0 +1,285 @@
+<div class="page-wrapper">
+	<div class="content container-fluid">
+				
+		<!-- Page Header -->
+		<div class="page-header">
+			<div class="row">
+				<div class="col-sm-12">
+					<h3 class="page-title mb-0">Transactions</h3>
+				</div>
+			</div>
+		</div>
+		<!-- /Page Header -->
+		
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="card">
+					<div class="card-header border-bottom-0">
+						<div class="row align-items-center">
+							<div class="col">
+								<h5 class="card-title">Transactions List</h5>
+							</div>
+							<div class="col-auto custom-list d-flex">
+								<div class="form-custom me-2">
+									<div id="tableSearch"  class="dataTables_wrapper"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="card-body p-0">
+						<table datatable [dtOptions]="dtOptions" class="datatable table table-borderless hover-table" id="data-table">
+							<thead class="thead-light">
+								<tr>
+									<th>Invoice No</th>
+									<th>Product ID</th>
+									<th>Product Name</th>
+									<th>Total Amount</th>
+									<th class="text-center">Status</th>
+									<th class="text-end">Actions</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><a [routerLink]="'/pharmacy-admin/reports/view'">#IN0001</a></td>
+									<td>#01</td>
+									<td>
+										<h2 class="table-avatar">
+											<a href="javascript:void(0)"><img class="avatar avatar-img" src="assets/admin/img/products/product1.jpg" alt="User Image"> Abilify</a>
+										</h2>
+									</td>
+									<td>$100.00</td>
+									<td class="text-center">
+										<span class="badge rounded-pill bg-success inv-badge">Paid</span>
+									</td>
+									<td class="text-end">
+										<div class="actions">
+											<a  data-bs-toggle="modal" href="#delete_modal" class="text-danger">
+												<i class="feather-trash-2 me-1"></i> Delete
+											</a>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td><a [routerLink]="'/pharmacy-admin/reports/view'">#IN0002</a></td>
+									<td>#02</td>
+									<td>
+										<h2 class="table-avatar">
+											<a href="javascript:void(0)"><img class="avatar avatar-img" src="assets/admin/img/products/product2.jpg" alt="User Image"> ITONE eye drops 10ml</a>
+										</h2>
+									</td>
+									<td>$200.00</td>
+									<td class="text-center">
+										<span class="badge rounded-pill bg-success inv-badge">Paid</span>
+									</td>
+									<td class="text-end">
+										<div class="actions">
+											<a  data-bs-toggle="modal" href="#delete_modal" class="text-danger">
+												<i class="feather-trash-2 me-1"></i> Delete
+											</a>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td><a [routerLink]="'/pharmacy-admin/reports/view'">#IN0003</a></td>
+									<td>#03</td>
+									<td>
+										<h2 class="table-avatar">
+											<a href="javascript:void(0)"><img class="avatar avatar-img" src="assets/admin/img/products/product3.jpg" alt="User Image"> Safi Natural Blood Purifier </a>
+										</h2>
+									</td>
+									<td>$250.00</td>
+									<td class="text-center">
+										<span class="badge rounded-pill bg-success inv-badge">Paid</span>
+									</td>
+									<td class="text-end">
+										<div class="actions">
+											<a  data-bs-toggle="modal" href="#delete_modal" class="text-danger">
+												<i class="feather-trash-2 me-1"></i> Delete
+											</a>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td><a [routerLink]="'/pharmacy-admin/reports/view'">#IN0004</a></td>
+									<td>#04</td>
+									<td>
+										<h2 class="table-avatar">
+											<a href="javascript:void(0)"><img class="avatar avatar-img" src="assets/admin/img/products/product4.jpg" alt="User Image"> Moisturization & Nourishment </a>
+										</h2>
+									</td>
+									<td>$150.00</td>
+									<td class="text-center">
+										<span class="badge rounded-pill bg-success inv-badge">Paid</span>
+									</td>
+									<td class="text-end">
+										<div class="actions">
+											<a  data-bs-toggle="modal" href="#delete_modal" class="text-danger">
+												<i class="feather-trash-2 me-1"></i> Delete
+											</a>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td><a [routerLink]="'/pharmacy-admin/reports/view'">#IN0005</a></td>
+									<td>#05</td>
+									<td>
+										<h2 class="table-avatar">
+											<a href="javascript:void(0)"><img class="avatar avatar-img" src="assets/admin/img/products/product5.jpg" alt="User Image"> Blackhead Removal</a>
+										</h2>
+									</td>
+									<td>$350.00</td>
+									<td class="text-center">
+										<span class="badge rounded-pill bg-success inv-badge">Paid</span>
+									</td>
+									<td class="text-end">
+										<div class="actions">
+											<a  data-bs-toggle="modal" href="#delete_modal" class="text-danger">
+												<i class="feather-trash-2 me-1"></i> Delete
+											</a>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td><a [routerLink]="'/pharmacy-admin/reports/view'">#IN0006</a></td>
+									<td>#06</td>
+									<td>
+										<h2 class="table-avatar">
+											<a href="javascript:void(0)"><img class="avatar avatar-img" src="assets/admin/img/products/product6.jpg" alt="User Image"> Abilify</a>
+										</h2>
+									</td>
+									<td>$300.00</td>
+									<td class="text-center">
+										<span class="badge rounded-pill bg-success inv-badge">Paid</span>
+									</td>
+									<td class="text-end">
+										<div class="actions">
+											<a  data-bs-toggle="modal" href="#delete_modal" class="text-danger">
+												<i class="feather-trash-2 me-1"></i> Delete
+											</a>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td><a [routerLink]="'/pharmacy-admin/reports/view'">#IN0007</a></td>
+									<td>#07</td>
+									<td>
+										<h2 class="table-avatar">
+											<a href="javascript:void(0)"><img class="avatar avatar-img" src="assets/admin/img/products/product1.jpg" alt="User Image"> Blackhead Removal</a>
+										</h2>
+									</td>
+									<td>$250.00</td>
+									<td class="text-center">
+										<span class="badge rounded-pill bg-success inv-badge">Paid</span>
+									</td>
+									<td class="text-end">
+										<div class="actions">
+											<a  data-bs-toggle="modal" href="#delete_modal" class="text-danger">
+												<i class="feather-trash-2 me-1"></i> Delete
+											</a>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td><a [routerLink]="'/pharmacy-admin/reports/view'">#IN0008</a></td>
+									<td>#08</td>
+									<td>
+										<h2 class="table-avatar">
+											<a href="javascript:void(0)"><img class="avatar avatar-img" src="assets/admin/img/products/product2.jpg" alt="User Image"> ITONE eye drops 10ml</a>
+										</h2>
+									</td>
+									<td>$150.00</td>
+									<td class="text-center">
+										<span class="badge rounded-pill bg-success inv-badge">Paid</span>
+									</td>
+									<td class="text-end">
+										<div class="actions">
+											<a  data-bs-toggle="modal" href="#delete_modal" class="text-danger">
+												<i class="feather-trash-2 me-1"></i> Delete
+											</a>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td><a [routerLink]="'/pharmacy-admin/reports/view'">#IN0009</a></td>
+									<td>#09</td>
+									<td>
+										<h2 class="table-avatar">
+											<a href="javascript:void(0)"><img class="avatar avatar-img" src="assets/admin/img/products/product3.jpg" alt="User Image"> Whitening & Fairness</a>
+										</h2>
+									</td>
+									<td>$100.00</td>
+									<td class="text-center">
+										<span class="badge rounded-pill bg-success inv-badge">Paid</span>
+									</td>
+									<td class="text-end">
+										<div class="actions">
+											<a  data-bs-toggle="modal" href="#delete_modal" class="text-danger">
+												<i class="feather-trash-2 me-1"></i> Delete
+											</a>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td><a [routerLink]="'/pharmacy-admin/reports/view'">#IN0010</a></td>
+									<td>#10</td>
+									<td>
+										<h2 class="table-avatar">
+											<a href="javascript:void(0)"><img class="avatar avatar-img" src="assets/admin/img/products/product4.jpg" alt="User Image"> Adderall</a>
+										</h2>
+									</td>
+									<td>$120.00</td>
+									<td class="text-center">
+										<span class="badge rounded-pill bg-success inv-badge">Paid</span>
+									</td>
+									<td class="text-end">
+										<div class="actions">
+											<a  data-bs-toggle="modal" href="#delete_modal" class="text-danger">
+												<i class="feather-trash-2 me-1"></i> Delete
+											</a>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div id="tablepagination"  class="dataTables_wrapper"></div>
+			</div>
+		</div>			
+	</div>
+</div>
+<!-- Delete Modal -->
+<div class="modal fade" id="delete_modal" aria-hidden="true" role="dialog">
+	<div class="modal-dialog modal-dialog-centered" role="document" >
+		<div class="modal-content doctor-profile">
+			<div class="modal-header border-bottom-0 justify-content-end">
+				<button type="button" class="close-btn" data-bs-dismiss="modal" aria-label="Close"><i class="feather-x-circle"></i></button>
+			</div>
+			<div class="modal-body">
+				<div class="delete-wrap text-center">
+					<div class="del-icon"><i class="feather-x-circle"></i></div>
+					<h2>Sure you Want to delete</h2>
+					<p>“Transactions List”</p>
+					<div class="submit-section">
+						<a href="javascript:void(0)" class="btn btn-success me-2">Yes</a>
+						<a href="javascript:void(0)" class="btn btn-danger" data-bs-dismiss="modal">No</a>
+					</div>								
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /Delete Modal -->
+<ng-template #delete>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Delete</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body text-center">
+		<p id="acc_msg">Are you sure you want to delete?</p>
+      <div style="margin-top:25px">
+        <button type="button" class="btn btn-success si_accept_confirm" id="btn-yes" (click)="deleteTrans()" >Yes</button>
+        <button type="button" class="btn btn-danger si_accept_cancel" (click)="decline()" >No</button>
+      </div>
+    </div>
+</ng-template>

@@ -1,0 +1,466 @@
+<app-home-ten-header></app-home-ten-header>
+<!-- Appoinment -->
+<section class="appoinment-section" id="appointments">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="appoinment-wrapper">
+                    <div class="appoinment-box aos" data-aos="fade-up">
+                        <form action="#">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-12">
+                                    <div class="form-group appoinment-location">
+                                        <i class="feather-search"></i> <input type="text" class="form-control" placeholder="Search Doctors, Clinics, Etc ...">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-12">
+                                    <div class="appoinment-right">
+                                        <div class="form-group appoinment-location">
+                                            <i class="feather-map-pin"></i> <input type="text" class="form-control" placeholder="Search location">
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" class="btn appoinment-btn" (click)="searchdoctor();">
+                                                <i class="feather-search"></i>
+                                            </button>
+                                            <button type="submit" class="btn appoinment-search-btn">
+                                                <i class="feather-sliders me-2"></i> Advanced Search
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="appointment-bg">
+        <div class="custom-contain">
+            <div class="row">
+                <div class="col-xl-5 col-lg-4 col-md-12 aos" data-aos="fade-up">
+                    <div class="appointment-left">
+                        <img src="assets/img/appoinment-img.png" class="img-fluid" alt="">
+                    </div>
+                </div>
+                <div class="col-xl-7 col-lg-8 col-md-12">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-4 col-md-6 d-flex aos" data-aos="fade-up">
+                            <div class="appointment-grid w-100">
+                                <div class="appointment-icon icon-primary">
+                                    <i class="fas fa-bed"></i>
+                                </div>
+                                <div class="appointment-info">
+                                    <a [routerLink]="'/patients/search-doctor'" class="appointment-link">Visit a Doctor</a>
+                                    <p>We hire the best specialists to deliver top-notch diagnostic services for you.</p>
+                                    <a [routerLink]="'/patients/search-doctor'" class="btn appointment-read-btn">Read More <i class="fas fa-arrow-right ms-2"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 d-flex aos" data-aos="fade-up">
+                            <div class="appointment-grid w-100">
+                                <div class="appointment-icon icon-green">
+                                    <i class="fas fa-tablets"></i>
+                                </div>
+                                <div class="appointment-info">
+                                    <a [routerLink]="'../pharmacy/pharmacy-search'" class="appointment-link">Find a Pharmacy</a>
+                                    <p>We provide the a wide range of medical services, so every person could have the opportunity.</p>
+                                    <a [routerLink]="'../pharmacy/pharmacy-search'" class="btn appointment-read-btn">Read More <i class="fas fa-arrow-right ms-2"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 d-flex aos" data-aos="fade-up">
+                            <div class="appointment-grid w-100">
+                                <div class="appointment-icon icon-red">
+                                    <i class="fas fa-vial"></i>
+                                </div>
+                                <div class="appointment-info">
+                                    <a href="javascript:void(0)" class="appointment-link">Find a Lab</a>
+                                    <p>We use the first-class medical equipment for timely diagnostics of various diseases.</p>
+                                    <a href="javascript:void(0)" class="btn appointment-read-btn">Coming Soon <i class="fas fa-arrow-right ms-2"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 d-flex aos" data-aos="fade-up">
+                            <div class="appointment-schedule w-100">
+                                <h2 class="schedule-title">Schedule</h2>
+                                <ul>
+                                    <li><span>Monday – Friday</span> 8.00 – 13.00</li>
+                                    <li><span>Saturday</span> 8.00 – 15.00</li>
+                                    <li><span>Sunday</span> 8.00 – 18.00</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-md-8 d-flex aos" data-aos="fade-up">
+                            <div class="appointment-request w-100">
+                                <h2 class="schedule-title text-white">REQUEST AN APPOINTMENT</h2>
+                                <div class="d-flex align-items-center">
+                                    <div class="appointment-img-holder">
+                                        <img src="assets/img/phone-call.png" alt="">
+                                    </div>
+                                    <div class="appointment-info-holder">
+                                        <p>Call us on</p>
+                                        <h2>+1 (208) 567 0707</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /Appoinment -->
+
+<!-- Service Section -->
+<section class="service-section">
+    <div class="container aos" data-aos="fade-up">
+        <div class="section-header text-center aos" data-aos="fade-up">
+            <h2 class="color-primary">High Quality Service for you</h2>
+            <p class="sub-title color-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-md-6 aos" data-aos="fade-up">
+                <div class="service-grid">
+                    <div class="effect-oscar">
+                        <img src="assets/img/services/services-01.jpg" class="img-fluid services-img" alt="">
+                        <div class="services-caption">
+                            <div class="services-inner">
+                                <div class="service-grid-icon">
+                                    <img src="assets/img/icons/icon6.svg" class="img-fluid" alt="">
+                                </div>
+                                <p>Orthopedic</p>
+                                <a [routerLink]="'/patients/doctor-profile'" class="service-link">
+                                    <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>			
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 aos" data-aos="fade-up">
+                <div class="service-grid">
+                    <div class="effect-oscar">
+                        <img src="assets/img/services/services-02.jpg" class="img-fluid services-img" alt="">
+                        <div class="services-caption">
+                            <div class="services-inner">
+                                <div class="service-grid-icon">
+                                    <img src="assets/img/icons/icon3.svg" class="img-fluid" alt="">
+                                </div>
+                                <p>Cardiologist</p>
+                                <a [routerLink]="'/patients/doctor-profile'" class="service-link">
+                                    <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>			
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 aos" data-aos="fade-up">
+                <div class="service-grid">
+                    <div class="effect-oscar">
+                        <img src="assets/img/services/services-03.jpg" class="img-fluid services-img" alt="">
+                        <div class="services-caption">
+                            <div class="services-inner">
+                                <div class="service-grid-icon">
+                                    <img src="assets/img/icons/icon4.svg" class="img-fluid" alt="">
+                                </div>
+                                <p>Dentist</p>
+                                <a [routerLink]="'/patients/doctor-profile'" class="service-link">
+                                    <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>			
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 aos" data-aos="fade-up">
+                <div class="service-grid">
+                    <div class="effect-oscar">
+                        <img src="assets/img/services/services-04.jpg" class="img-fluid services-img" alt="">
+                        <div class="services-caption">
+                            <div class="services-inner">
+                                <div class="service-grid-icon">
+                                    <img src="assets/img/icons/icon2.svg" class="img-fluid" alt="">
+                                </div>
+                                <p>Neurology</p>
+                                <a [routerLink]="'/patients/doctor-profile'" class="service-link">
+                                    <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>			
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /Service Section -->
+
+<!-- Doctor Section -->
+<section class="doctor-section">
+    <div class="doctor-right-img aos" data-aos="fade-up">
+        <img src="assets/img/doctors/doctor-img.jpg" class="img-fluid" alt="">
+    </div>
+    <div class="container">
+        <div class="section-header text-center aos" data-aos="fade-up">
+            <h2 class="color-primary">Book Our Doctor</h2>
+            <p class="sub-title color-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+        <div class="row">
+            <div class="col-md-12 aos" data-aos="fade-up">
+                <div class="doctor-book-slider slider">
+                    <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfigure">
+                        <div class="slick-slide" *ngFor="let doctor of doctorslide;let i=index">
+                            <div ngxSlickItem>
+                                <div class="doctor-profile-widget">
+                                    <a [routerLink]="'/patients/doctor-profile'" tabindex="-1">
+                                        <img [src]="doctor.img" class="img-fluid book-doctor" alt="">
+                                    </a>
+                                    <div class="pro-content">
+                                        <div class="provider-info">
+                                            <div class="pro-icon">
+                                                <img [src]="doctor.speciality"  class="img-fluid" alt="">
+                                            </div>
+                                            <h3 class="mb-1">
+                                                <a [routerLink]="'/patients/doctor-profile'" tabindex="0">{{doctor.doctor_name}}
+                                                    <img src="assets/img/doctor-check.png" alt="">
+                                                </a>
+                                            </h3>
+                                            <p>{{doctor.specialist}}</p>
+                                            <div>
+                                                <div class="rating">
+                                                    <i class="fas fa-star filled"></i>
+                                                    <i class="fas fa-star filled"></i>
+                                                    <i class="fas fa-star filled"></i>
+                                                    <i class="fas fa-star filled"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <span class="d-inline-block average-rating">4.9 ({{doctor.rating}})</span>
+                                                </div>
+                                            </div>
+                                            <div class="content-info">
+                                                <div class="social-info">
+                                                    <a href="" target="_blank"><i class="fab fa-facebook hi-icon"></i></a>
+                                                    <a href="" target="_blank"><i class="fab fa-linkedin hi-icon"></i></a>
+                                                    <a href="" target="_blank"><i class="fab fa-instagram hi-icon"></i></a>
+                                                    <a href="" target="_blank"><i class="fab fa-twitter hi-icon"></i></a>
+                                                </div>
+                                                <div class="booking-btn">
+                                                    <a [routerLink]="'/patients/booking'" [queryParams]="{id: doctor.id}" class="btn book-btn">
+                                                        Book Appointment
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ngx-slick-carousel>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-end">
+                <div class="slick-view-btn me-2">
+                    <a [routerLink]="'/patients/doctor-profile'" class="btn">View More <i class="fas fa-arrow-right ms-2"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /Doctor Section -->
+
+<!-- Features Section -->
+<section class="features-section">
+    <div class="container">
+        <div class="section-header text-center aos" data-aos="fade-up">
+            <h2 class="color-primary">Availabe Features in Our Clinic</h2>
+            <p class="sub-title color-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+        <div class="row">
+            <div class="col-md-12 aos" data-aos="fade-up">
+                <ngx-slick-carousel class="features-section-slider slider" #slickModal="slick-carousel" [config]="slideConfig3">
+                    <div ngxSlickItem *ngFor="let slide of slides">
+                        <div class="features-grid hvr-bounce-to-bottom">
+                            <div class="features-cricle">
+                                <div class="features-round">
+                                    <img src="{{slide.img}}" class="img-fluid" alt="">
+                                </div>
+                            </div>
+                            <h4>{{slide.name}}</h4>
+                        </div>
+                    </div>
+                </ngx-slick-carousel>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-end">
+                <div class="slick-view-btn me-2">
+                    <a href="javascript:void(0)" class="btn">
+                        View More <i class="fas fa-arrow-right ms-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /Features Section -->
+
+
+<!-- News Section -->
+<section class="news-letter-bg">
+    <div class="container">
+        <div class="news-bg">
+            <div class="row">
+                <div class="col-lg-8 col-md-12 news-left aos" data-aos="fade-up">
+                    <div>
+                        <h2>Grab Our Newsletter</h2>
+                        <P>To receive latest offers and discounts from the shop.</P>
+                    </div>
+                    <div>
+                        <form>
+                            <div class="form-group">
+                                <input type="text" class="form-control me-2" placeholder="Enter Your Email Address">
+                                <button type="submit" class="btn">Subscribe</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12 aos" data-aos="fade-up">
+                    <div class="news-img">
+                        <img src="assets/img/blog/news-img.png" class="img-fluid" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /News Section -->
+
+<!-- News Section -->
+<section class="news-section">
+    <div class="container">
+        <div class="section-header text-center aos" data-aos="fade-up">
+            <h2 class="color-primary">Let’s See Our Latest News</h2>
+            <p class="sub-title color-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6 d-flex aos" data-aos="fade-up">
+                <div class="grid-news w-100">
+                    <div class="news-image">
+                        <a [routerLink]="'/blog/blog-details'">
+                            <img class="img-fluid" src="assets/img/blog/blog-11.jpg" alt="News Image">
+                        </a>
+                    </div>
+                    <div class="news-content">
+                        <ul>
+                            <li>
+                                <div class="news-date">
+                                    <a href="javascript:void(0)">
+                                        <i class="feather-calendar me-2"></i>
+                                        <span>4 Dec 2021</span>
+                                    </a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="news-date">
+                                    <a href="javascript:void(0)" class="news-light-btn">
+                                        <i class="feather-tag me-2"></i>
+                                        <span>Heath Care</span>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                        <h3 class="news-title">
+                            <a [routerLink]="'/blog/blog-details'">How to handle patient body in MRI</a>
+                        </h3>
+                        <p>
+                            <a [routerLink]="'/blog/blog-details'">Read News</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 d-flex aos" data-aos="fade-up">
+                <div class="grid-news w-100">
+                    <div class="news-image">
+                        <a [routerLink]="'/blog/blog-details'">
+                            <img class="img-fluid" src="assets/img/blog/blog-12.jpg" alt="News Image">
+                        </a>
+                    </div>
+                    <div class="news-content">
+                        <ul>
+                            <li>
+                                <div class="news-date">
+                                    <a href="javascript:void(0)">
+                                        <i class="feather-calendar me-2"></i>
+                                        <span>10 Dec 2021</span>
+                                    </a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="news-date">
+                                    <a href="javascript:void(0)" class="news-light-btn">
+                                        <i class="feather-tag me-2"></i>
+                                        <span>Surgery</span>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                        <h3 class="news-title">
+                            <a [routerLink]="'/blog/blog-details'">Doccure – Making your clinic painless visit?</a>
+                        </h3>
+                        <p>
+                            <a [routerLink]="'/blog/blog-details'">Read News</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 d-flex aos" data-aos="fade-up">
+                <div class="grid-news w-100">
+                    <div class="news-image">
+                        <a [routerLink]="'/blog/blog-details'">
+                            <img class="img-fluid" src="assets/img/blog/blog-13.jpg" alt="News Image">
+                        </a>
+                    </div>
+                    <div class="news-content">
+                        <ul>
+                            <li>
+                                <div class="news-date">
+                                    <a href="javascript:void(0)">
+                                        <i class="feather-calendar me-2"></i>
+                                        <span>15 Dec 2021</span>
+                                    </a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="news-date">
+                                    <a href="javascript:void(0)" class="news-light-btn">
+                                        <i class="feather-tag me-2"></i>
+                                        <span>General</span>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                        <h3 class="news-title">
+                            <a [routerLink]="'/blog/blog-details'">Benefits of consulting with an Online Doctor</a>
+                        </h3>
+                        <p>
+                            <a [routerLink]="'/blog/blog-details'">Read News</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="blog-details-btn text-center">
+            <a [routerLink]="'/blog/blog-details'" class="btn view-more">View More <i class="fas fa-arrow-right ms-2"></i></a>
+        </div>
+    </div>
+</section>
+<!-- /News Section -->
+
+        
+<app-home-ten-footer></app-home-ten-footer>

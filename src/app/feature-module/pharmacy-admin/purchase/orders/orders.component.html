@@ -1,0 +1,200 @@
+<!-- Page Wrapper -->
+<div class="page-wrapper">
+	<div class="content container-fluid">
+				
+		<!-- Page Header -->
+		<div class="page-header">
+			<div class="row">
+				<div class="col-12">
+					<h3 class="page-title">Order</h3>
+				</div>
+			</div>
+		</div>
+		<!-- /Page Header -->
+		<div class="row">
+			<div class="col-md-12">
+			
+				<!-- Recent Orders -->
+				<div class="card">
+					<div class="card-header border-bottom-0">
+						<div class="row align-items-center">
+							<div class="col">
+								<h5 class="card-title">Order List</h5>
+							</div>
+							<div class="col-auto custom-list d-flex">
+								<div class="form-custom me-2">
+									<div id="tableSearch"  class="dataTables_wrapper"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="card-body p-0">
+						<div class="table-responsive">
+							<table datatable [dtOptions]="dtOptions" class="datatable table table-borderless hover-table" id="data-table">
+								<thead class="thead-light">
+									<tr>
+										<th>#</th>
+										<th>Supplier ID</th>
+										<th>Supplier Name</th>
+										<th>Order by</th>
+										<th>Add order</th>
+										<th>Order list</th>
+										<th class="text-end">Action</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>1</td>
+										<td>256</td>
+										<td>Douglas Meyer</td>
+										<td>Trinity General Hospital</td>
+										<td>10-5-2020</td>
+										<td>Dolofin Antigripal(Dolo)  3</td>
+										<td class="text-end">
+											<div class="actions">
+												<a  data-bs-toggle="modal" href="#delete_modal" class="text-danger">
+													<i class="feather-trash-2 me-1"></i> Delete
+												</a>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>2</td>
+										<td>20</td>
+										<td>Tyler Robinson</td>
+										<td>Grand Valley Clinic</td>
+										<td>10-5-2020</td>
+										<td>Dolofin Antigripal(Dolo)  50<br>
+										Dolofin Antigripal(Dolo)  4</td>
+										<td class="text-end">
+											<div class="actions">
+												<a  data-bs-toggle="modal" href="#delete_modal" class="text-danger">
+													<i class="feather-trash-2 me-1"></i> Delete
+												</a>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>3</td>
+										<td>15</td>
+										<td>Mary Dixon</td>
+										<td>Grand Plains Clinic</td>
+										<td>10-5-2020</td>
+										<td>Dolo 650(CIpla)  0</td>
+										<td class="text-end">
+											<div class="actions">
+												<a  data-bs-toggle="modal" href="#delete_modal" class="text-danger">
+													<i class="feather-trash-2 me-1"></i> Delete
+												</a>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>4</td>
+										<td>156</td>
+										<td>Kurt Wooten</td>
+										<td>Mercy Vale Clinic</td>
+										<td>10-5-2020</td>
+										<td>Tektonik(None)  2</td>
+										<td class="text-end">
+											<div class="actions">
+												<a  data-bs-toggle="modal" href="#delete_modal" class="text-danger">
+													<i class="feather-trash-2 me-1"></i> Delete
+												</a>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>5</td>
+										<td>23</td>
+										<td>Vickie Pritchett</td>
+										<td>Kindred Soul Clinic</td>
+										<td>10-5-2020</td>
+										<td>Dolofin Antigripal(Dolo)  4</td>
+										<td class="text-end">
+											<div class="actions">
+												<a  data-bs-toggle="modal" href="#delete_modal" class="text-danger">
+													<i class="feather-trash-2 me-1"></i> Delete
+												</a>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>6</td>
+										<td>35</td>
+										<td>Joanne Fry</td>
+										<td>Hope Haven Hospital</td>
+										<td>10-5-2020</td>
+										<td>Dolo 650(CIpla)  0</td>
+										<td class="text-end">
+											<div class="actions">
+												<a  data-bs-toggle="modal" href="#delete_modal" class="text-danger">
+													<i class="feather-trash-2 me-1"></i> Delete
+												</a>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>7</td>
+										<td>205</td>
+										<td>Christopher Johnson</td>
+										<td>Hill Crest Clinic</td>
+										<td>10-5-2020</td>
+										<td>Dolofin Antigripal(Dolo)  50<br>
+										Dolofin Antigripal(Dolo)  4</td>
+										<td class="text-end">
+											<div class="actions">
+												<a  data-bs-toggle="modal" href="#delete_modal" class="text-danger">
+													<i class="feather-trash-2 me-1"></i> Delete
+												</a>
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div id="tablepagination"  class="dataTables_wrapper"></div>
+				<!-- /Recent Orders -->
+				
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /Page Wrapper -->
+<!-- Delete Modal -->
+<div class="modal fade" id="delete_modal" aria-hidden="true" role="dialog">
+	<div class="modal-dialog modal-dialog-centered" role="document" >
+		<div class="modal-content doctor-profile">
+			<div class="modal-header border-bottom-0 justify-content-end">
+				<button type="button" class="close-btn" data-bs-dismiss="modal" aria-label="Close"><i class="feather-x-circle"></i></button>
+			</div>
+			<div class="modal-body">
+				<div class="delete-wrap text-center">
+					<div class="del-icon"><i class="feather-x-circle"></i></div>
+					<h2>Sure you Want to delete</h2>
+					<p>“Order”</p>
+					<div class="submit-section">
+						<a href="javascript:void(0)" class="btn btn-success me-2">Yes</a>
+						<a href="javascript:void(0)" class="btn btn-danger" data-bs-dismiss="modal">No</a>
+					</div>								
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /Delete Modal -->
+<ng-template #delete>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Delete</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body text-center">
+		<p id="acc_msg">Are you sure you want to delete?</p>
+      <div style="margin-top:25px">
+        <button type="button" class="btn btn-success si_accept_confirm" id="btn-yes" (click)="deleteOrder()" >Yes</button>
+        <button type="button" class="btn btn-danger si_accept_cancel" (click)="decline()" >No</button>
+      </div>
+    </div>
+</ng-template>

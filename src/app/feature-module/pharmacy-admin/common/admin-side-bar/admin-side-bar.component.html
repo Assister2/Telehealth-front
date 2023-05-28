@@ -1,0 +1,61 @@
+<!-- Sidebar -->
+<div class="sidebar" id="sidebar">
+	<div class="sidebar-inner slimscroll">
+		<div id="sidebar-menu" class="sidebar-menu">
+			<ul>
+				<li class="menu-title"> 
+					<span>Main</span>
+				</li>
+				<li [routerLink]="'/pharmacy-admin/dashboard'" [class.active]="page === 'Dashboard'"> 
+					<a (click)="change('Dashboard')"><i class="feather-home"></i> <span>Dashboard</span></a>
+				</li>
+				<li class="submenu">
+					<a href="javascript:void(0)"><i class="feather-shopping-cart"></i> <span> Products</span> <span class="menu-arrow"></span></a>
+					<ul style="display: none;">
+						<li [class.active]="page === 'Products'"><a (click)="change('Products')" [routerLink]="'products/list'"> Products </a></li>
+						<li [class.active]="page === 'Add Product'"><a (click)="change('Add Product')" [routerLink]="'products/add'"> Add Product </a></li>
+						<li [class.active]="page === 'Out Stock'"><a (click)="change('Out Stock')" [routerLink]="'products/out-stock'"> Out Stock </a></li>
+						<li [class.active]="page === 'Expired'"><a (click)="change('Expired')" [routerLink]="'products/expired'"> Expired </a></li>
+					</ul>
+				</li>
+				<li [class.active]="page === 'Categories'"> 
+					<a (click)="change('Categories')" [routerLink]="'/pharmacy-admin/categories'"><i class="feather-layout"></i> <span>Categories</span></a>
+				</li>
+				<li class="submenu">
+					<a href="javascript:void(0)"><i class="feather-star"></i> <span> Purchase</span> <span class="menu-arrow"></span></a>
+					<ul style="display: none;">
+						<li [class.active]="page === 'Purchase'"><a (click)="change('Purchase')" [routerLink]="'purchase/list'">Purchase </a></li>
+						<li [class.active]="page === 'Add Purchase'"><a (click)="change('Add Purchase')" [routerLink]="'purchase/add'">Add Purchase </a></li>
+						<li [class.active]="page === 'Orders'"><a (click)="change('Orders')" [routerLink]="'purchase/orders'">Orders</a></li>    
+					</ul>
+				</li>
+				<li [class.active]="page === 'Sales'" > 
+					<a (click)="change('Sales')" [routerLink]="'/pharmacy-admin/sales'"><i class="feather-activity"></i> <span>Sales</span></a>
+				</li>
+				<li class="submenu">
+					<a href="javascript:void(0)"><i class="feather-user"></i> <span> Supplier</span> <span class="menu-arrow"></span></a>
+					<ul style="display: none;">
+						<li [class.active]="page === 'Supplier'"><a (click)="change('Supplier')" [routerLink]="'supplier/list'">Supplier </a></li>
+						<li [class.active]="page === 'Add Supplier'"><a (click)="change('Add Supplier')" [routerLink]="'supplier/add'">Add Supplier </a></li>   
+					</ul>
+				</li>
+				<li [class.active]="page === 'Patients'" > 
+					<a (click)="change('Transaction')" [routerLink]="'/pharmacy-admin/transactions'" ><i class="feather-credit-card"></i> <span> Transaction</span></a>
+				</li>
+				<li class="submenu">
+					<a href="javascript:void(0)"><i class="feather-file-text"></i> <span> Reports</span> <span class="menu-arrow"></span></a>
+					<ul style="display: none;">
+						<li [class.active]="page === 'Invoice'"><a (click)="change('Invoice')" [routerLink]="'/pharmacy-admin/reports/view'">Invoice</a></li>
+						<li [class.active]="page === 'Invoice Reports'"><a (click)="change('Invoice Reports')" [routerLink]="'/pharmacy-admin/reports/list'">Invoice Reports</a></li>
+					</ul>
+				</li>
+				<li class="menu-title"> 
+					<span>Pages</span>
+				</li>
+				<li [class.active]="page === 'Profile'"><a (click)="change('Profile')" [routerLink]="'profile'"><i class="feather-user"></i> <span>Profile</span></a></li>				
+				<li [class.active]="page === 'Settings'"><a (click)="change('Settings')" [routerLink]="'settings'"><i class="feather-sliders"></i> <span>Settings</span></a></li>				
+			</ul>
+		</div>
+	</div>
+</div>
+<!-- /Sidebar -->
