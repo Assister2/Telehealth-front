@@ -116,6 +116,77 @@ export class HomeIndexComponent implements OnInit {
         img: 'assets/img/banner-4.jpg'
       },
     ]
+    ourdoctorsOptions = {
+      loop:true,
+         margin:15,
+         dots: false,
+         nav:true,
+         navText: [ '<i class="fas fa-chevron-left custom-arrow"></i>', '<i class="fas fa-chevron-right custom-arrow"></i>' ], 
+         responsive:{
+           0:{
+             items:1
+           },
+           500:{
+             items:1
+           },
+           768:{
+             items:2
+           },
+           1000:{
+             items:4
+           },
+           1300:{
+             items:4
+           }
+         }
+     };
+     ourdoctorsslides = [
+      {
+        img: "assets/img/doctors/doctor-01.jpg",
+        range: "$20 - $50",
+        rating: "3.5",
+        name: "Dr. Ruby Perrin",
+        speciality: "BDS, MDS - Oral & Maxillofacial Surgery",
+        address: "Georgia, USA",
+        count: "450"
+      },
+      {
+        img: "assets/img/doctors/doctor-04.jpg",
+        range: "$20 - $50",
+        rating: "3.5",
+        name: "Dr. Deborah Angel",
+        speciality: "MBBS, MD - General Medicine, DNB",
+        address: "Georgia, USA",
+        count: "450"
+      },
+      {
+        img: "assets/img/doctors/doctor-03.jpg",
+        range: "$20 - $50",
+        rating: "3.5",
+        name: "Dr. Sofia Brient",
+        speciality: "MBBS, MS - General Surgery, MCh",
+        address: "Georgia, USA",
+        count: "450"
+      },
+      {
+        img: "assets/img/doctors/doctor-02.jpg",
+        range: "$20 - $50",
+        rating: "3.5",
+        name: "Dr. Darren Elder",
+        speciality: "BDS, MDS - Oral & Maxillofacial Surgery",
+        address: "Georgia, USA",
+        count: "450"
+      },
+      {
+        img: "assets/img/doctors/doctor-01.jpg",
+        range: "$20 - $50",
+        rating: "3.5",
+        name: "Dr. Ruby Perrin",
+        speciality: "BDS, MDS - Oral & Maxillofacial Surgery",
+        address: "Georgia, USA",
+        count: "450"
+      },
+    ];
     doctorslide = [
       {
         img: 'assets/img/doctors/book-doctor-05.jpg',

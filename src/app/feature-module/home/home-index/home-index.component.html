@@ -17,9 +17,9 @@
                     <div class="banner-wrapper doc-form d-lg-block d-md-none banner-wrapper-left">
                         <div class="app-form">
                             <div class="banner-three-content">
-                                <h2>We Provide Solution</h2>
-                                <h2><span>To stressless Life</span></h2>
-                                <p>People who are more perfectionist are most likely to be depressed, Because they stress themselves out so much.</p>
+                                <h2>Doctor Appointments</h2>
+                                <h2><span>Online. Anytime.</span></h2>
+                                <p>Discover top-quality physicians at the most competitive prices. Schedule an appointment in minutes for exceptional care.</p>
                             </div>
                         </div>
                     </div>
@@ -174,8 +174,9 @@
                     <p>Access highly-rated online doctors and specialists who are currently available to provide medical assistance.</p>
                 </div>
             </div>
+            
             <div class="col-lg-8">
-                <div class="doctor-slider slider aos" data-aos="fade-up">
+                <!-- <div class="doctor-slider slider aos" data-aos="fade-up">
                     <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfigure">
                         <div class="slick-slide" *ngFor="let doctor of doctors;let i=index">
                             <div ngxSlickItem>
@@ -235,7 +236,47 @@
                             </div>
                         </div>
                     </ngx-slick-carousel>
-                </div>
+                </div> -->
+                <owl-carousel-o [options]="ourdoctorsOptions" class="our-doctors">
+                    <ng-container *ngFor="let slide of ourdoctorsslides" >
+                        <ng-template carouselSlide>
+                            <div class="item">
+                                <div class="our-doctors-card">
+                                    <div class="doctors-header">
+                                        <a [routerLink]="'/patients/doctor-profile'"><img src="{{slide.img}}" alt="" class="img-fluid"></a>
+                                        <div class="img-overlay">
+                                            <span>{{slide.range}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="doctors-body">
+                                        <div class="rating">
+                                            <i class="fas fa-star filled"></i>
+                                            <i class="fas fa-star filled"></i>
+                                            <i class="fas fa-star filled"></i>
+                                            <i class="fas fa-star filled"></i>
+                                            <i class="fas fa-star filled"></i>
+                                            <span class="d-inline-block average-ratings">{{slide.rating}}</span>
+                                        </div>
+                                        <a [routerLink]="'/patients/doctor-profile'"><h4>{{slide.name}}</h4></a>
+                                        <p>{{slide.speciality}}</p>
+                                        <div class="location d-flex">
+                                            <p><i class="fas fa-map-marker-alt"></i> {{slide.address}}</p>
+                                            <p class="ms-auto"><i class="fas fa-user-md"></i> {{slide.count}} Consultations</p>
+                                        </div>
+                                        <div class="row row-sm">
+                                            <div class="col-6">
+                                                <a [routerLink]="'/patients/doctor-profile'" class="btn view-btn" tabindex="0">View Profile</a>
+                                            </div>
+                                            <div class="col-6">
+                                                <a [routerLink]="'/patients/booking'" class="btn book-btn" tabindex="0">Book Now</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </ng-container>
+                </owl-carousel-o>
             </div>
         </div>
     </div>
@@ -328,393 +369,463 @@
 </section> -->
 <!-- /Best Doctor Section -->
 
-<section _ngcontent-rwq-c80="" class="specialities-section">
-    <div _ngcontent-rwq-c80="" class="shapes"><img _ngcontent-rwq-c80="" src="assets/img/shapes/shape-3.png" alt=""
-            class="img-fluid shape-3"><img _ngcontent-rwq-c80="" src="assets/img/shapes/shape-4.png" alt=""
-            class="img-fluid shape-4"></div>
-    <div _ngcontent-rwq-c80="" class="container">
-        <div _ngcontent-rwq-c80="" class="row">
-            <div _ngcontent-rwq-c80="" class="col-md-6">
-                <div _ngcontent-rwq-c80="" class="section-heading bg-area">
-                    <h2 _ngcontent-rwq-c80="">Browse by Specialities</h2>
-                    <p _ngcontent-rwq-c80="">Find experienced doctors across all specialties</p>
+<!-- Browse Section Five -->
+<section class="browse-section-five">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-header section-header-five text-center aos" data-aos="fade-up">
+                    <h2 class="title-five">Browse by Specialities</h2>
                 </div>
             </div>
         </div>
-        <div _ngcontent-rwq-c80="" class="row">
-            <div _ngcontent-rwq-c80="" class="col-lg-3 col-md-6">
-                <div _ngcontent-rwq-c80="" class="specialist-card d-flex">
-                    <div _ngcontent-rwq-c80="" class="specialist-img"><img _ngcontent-rwq-c80=""
-                            src="assets/img/category/1.png" alt="" class="img-fluid"></div>
-                    <div _ngcontent-rwq-c80="" class="specialist-info"><a _ngcontent-rwq-c80=""
-                            href="javascript:void(0)">
-                            <h4 _ngcontent-rwq-c80="">Urology</h4>
-                        </a>
-                        <p _ngcontent-rwq-c80="">21 Doctors</p>
+        <div class="row">
+            <div class="col-lg-3 col-md-6 aos" data-aos="fade-up">
+                <div class="specialist-card-five d-flex hvr-bounce-to-right">
+                    <div class="specialist-img-five">
+                        <img src="assets/img/icons/icon1.svg" alt="" class="img-fluid">
                     </div>
-                    <div _ngcontent-rwq-c80="" class="specialist-nav ms-auto"><a _ngcontent-rwq-c80=""
-                            href="javascript:void(0)"><i _ngcontent-rwq-c80=""
-                                class="fas fa-long-arrow-alt-right"></i></a></div>
+                    <div class="specialist-info">
+                        <a href="javascript:void(0)">Primary Care</a>
+                    </div>
+                    <div class="specialist-nav-five ms-auto">
+                        <a href="javascript:void(0)"><i class="feather-arrow-right"></i></a>
+                    </div>
                 </div>
             </div>
-            <div _ngcontent-rwq-c80="" class="col-lg-3 col-md-6">
-                <div _ngcontent-rwq-c80="" class="specialist-card d-flex">
-                    <div _ngcontent-rwq-c80="" class="specialist-img"><img _ngcontent-rwq-c80=""
-                            src="assets/img/category/3.png" alt="" class="img-fluid"></div>
-                    <div _ngcontent-rwq-c80="" class="specialist-info"><a _ngcontent-rwq-c80=""
-                            href="javascript:void(0)">
-                            <h4 _ngcontent-rwq-c80="">Neurology</h4>
-                        </a>
-                        <p _ngcontent-rwq-c80="">21 Doctors</p>
+            <div class="col-lg-3 col-md-6 aos" data-aos="fade-up">
+                <div class="specialist-card-five d-flex hvr-bounce-to-right">
+                    <div class="specialist-img-five">
+                        <img src="assets/img/icons/icon7.svg" alt="" class="img-fluid">
                     </div>
-                    <div _ngcontent-rwq-c80="" class="specialist-nav ms-auto"><a _ngcontent-rwq-c80=""
-                            href="javascript:void(0)"><i _ngcontent-rwq-c80=""
-                                class="fas fa-long-arrow-alt-right"></i></a></div>
+                    <div class="specialist-info">
+                        <a href="javascript:void(0)">OB/GYN</a>
+                    </div>
+                    <div class="specialist-nav-five ms-auto">
+                        <a href="javascript:void(0)"><i class="feather-arrow-right"></i></a>
+                    </div>
                 </div>
             </div>
-            <div _ngcontent-rwq-c80="" class="col-lg-3 col-md-6">
-                <div _ngcontent-rwq-c80="" class="specialist-card d-flex">
-                    <div _ngcontent-rwq-c80="" class="specialist-img"><img _ngcontent-rwq-c80=""
-                            src="assets/img/category/2.png" alt="" class="img-fluid"></div>
-                    <div _ngcontent-rwq-c80="" class="specialist-info"><a _ngcontent-rwq-c80=""
-                            href="javascript:void(0)">
-                            <h4 _ngcontent-rwq-c80="">Orthopedic</h4>
-                        </a>
-                        <p _ngcontent-rwq-c80="">21 Doctors</p>
+            <div class="col-lg-3 col-md-6 aos" data-aos="fade-up">
+                <div class="specialist-card-five d-flex hvr-bounce-to-right">
+                    <div class="specialist-img-five">
+                        <img src="assets/img/icons/icon4.svg" alt="" class="img-fluid">
                     </div>
-                    <div _ngcontent-rwq-c80="" class="specialist-nav ms-auto"><a _ngcontent-rwq-c80=""
-                            href="javascript:void(0)"><i _ngcontent-rwq-c80=""
-                                class="fas fa-long-arrow-alt-right"></i></a></div>
+                    <div class="specialist-info">
+                        <a href="javascript:void(0)">Orthopedic</a>
+                    </div>
+                    <div class="specialist-nav-five ms-auto">
+                        <a href="javascript:void(0)"><i class="feather-arrow-right"></i></a>
+                    </div>
                 </div>
             </div>
-            <div _ngcontent-rwq-c80="" class="col-lg-3 col-md-6">
-                <div _ngcontent-rwq-c80="" class="specialist-card d-flex">
-                    <div _ngcontent-rwq-c80="" class="specialist-img"><img _ngcontent-rwq-c80=""
-                            src="assets/img/category/4.png" alt="" class="img-fluid"></div>
-                    <div _ngcontent-rwq-c80="" class="specialist-info"><a _ngcontent-rwq-c80=""
-                            href="javascript:void(0)">
-                            <h4 _ngcontent-rwq-c80="">Cardiologist</h4>
-                        </a>
-                        <p _ngcontent-rwq-c80="">21 Doctors</p>
+            <div class="col-lg-3 col-md-6 aos" data-aos="fade-up">
+                <div class="specialist-card-five d-flex hvr-bounce-to-right">
+                    <div class="specialist-img-five">
+                        <img src="assets/img/icons/icon3.svg" alt="" class="img-fluid spec-img">
                     </div>
-                    <div _ngcontent-rwq-c80="" class="specialist-nav ms-auto"><a _ngcontent-rwq-c80=""
-                            href="javascript:void(0)"><i _ngcontent-rwq-c80=""
-                                class="fas fa-long-arrow-alt-right"></i></a></div>
+                    <div class="specialist-info">
+                        <a href="javascript:void(0)">Cardiologist</a>
+                    </div>
+                    <div class="specialist-nav-five ms-auto">
+                        <a href="javascript:void(0)"><i class="feather-arrow-right"></i></a>
+                    </div>
                 </div>
             </div>
-            <div _ngcontent-rwq-c80="" class="col-lg-3 col-md-6">
-                <div _ngcontent-rwq-c80="" class="specialist-card d-flex">
-                    <div _ngcontent-rwq-c80="" class="specialist-img"><img _ngcontent-rwq-c80=""
-                            src="assets/img/category/1.png" alt="" class="img-fluid"></div>
-                    <div _ngcontent-rwq-c80="" class="specialist-info"><a _ngcontent-rwq-c80=""
-                            href="javascript:void(0)">
-                            <h4 _ngcontent-rwq-c80="">Urology</h4>
-                        </a>
-                        <p _ngcontent-rwq-c80="">21 Doctors</p>
+            <div class="col-lg-3 col-md-6 aos" data-aos="fade-up">
+                <div class="specialist-card-five d-flex hvr-bounce-to-right">
+                    <div class="specialist-img-five">
+                        <img src="assets/img/icons/icon8.svg" alt="" class="img-fluid">
                     </div>
-                    <div _ngcontent-rwq-c80="" class="specialist-nav ms-auto"><a _ngcontent-rwq-c80=""
-                            href="javascript:void(0)"><i _ngcontent-rwq-c80=""
-                                class="fas fa-long-arrow-alt-right"></i></a></div>
+                    <div class="specialist-info">
+                        <a href="javascript:void(0)">Urology</a>
+                    </div>
+                    <div class="specialist-nav-five ms-auto">
+                        <a href="javascript:void(0)"><i class="feather-arrow-right"></i></a>
+                    </div>
                 </div>
             </div>
-            <div _ngcontent-rwq-c80="" class="col-lg-3 col-md-6">
-                <div _ngcontent-rwq-c80="" class="specialist-card d-flex">
-                    <div _ngcontent-rwq-c80="" class="specialist-img"><img _ngcontent-rwq-c80=""
-                            src="assets/img/category/3.png" alt="" class="img-fluid"></div>
-                    <div _ngcontent-rwq-c80="" class="specialist-info"><a _ngcontent-rwq-c80=""
-                            href="javascript:void(0)">
-                            <h4 _ngcontent-rwq-c80="">Neurology</h4>
-                        </a>
-                        <p _ngcontent-rwq-c80="">21 Doctors</p>
+            <div class="col-lg-3 col-md-6 aos" data-aos="fade-up">
+                <div class="specialist-card-five d-flex hvr-bounce-to-right">
+                    <div class="specialist-img-five">
+                        <img src="assets/img/icons/icon9.svg" alt="" class="img-fluid">
                     </div>
-                    <div _ngcontent-rwq-c80="" class="specialist-nav ms-auto"><a _ngcontent-rwq-c80=""
-                            href="javascript:void(0)"><i _ngcontent-rwq-c80=""
-                                class="fas fa-long-arrow-alt-right"></i></a></div>
+                    <div class="specialist-info">
+                        <a href="javascript:void(0)">Neurology</a>
+                    </div>
+                    <div class="specialist-nav-five ms-auto">
+                        <a href="javascript:void(0)"><i class="feather-arrow-right"></i></a>
+                    </div>
                 </div>
             </div>
-            <div _ngcontent-rwq-c80="" class="col-lg-3 col-md-6">
-                <div _ngcontent-rwq-c80="" class="specialist-card d-flex">
-                    <div _ngcontent-rwq-c80="" class="specialist-img"><img _ngcontent-rwq-c80=""
-                            src="assets/img/category/2.png" alt="" class="img-fluid"></div>
-                    <div _ngcontent-rwq-c80="" class="specialist-info"><a _ngcontent-rwq-c80=""
-                            href="javascript:void(0)">
-                            <h4 _ngcontent-rwq-c80="">Orthopedic</h4>
-                        </a>
-                        <p _ngcontent-rwq-c80="">21 Doctors</p>
+            <div class="col-lg-3 col-md-6 aos" data-aos="fade-up">
+                <div class="specialist-card-five d-flex hvr-bounce-to-right">
+                    <div class="specialist-img-five">
+                        <img src="assets/img/icons/icon10.svg" alt="" class="img-fluid">
                     </div>
-                    <div _ngcontent-rwq-c80="" class="specialist-nav ms-auto"><a _ngcontent-rwq-c80=""
-                            href="javascript:void(0)"><i _ngcontent-rwq-c80=""
-                                class="fas fa-long-arrow-alt-right"></i></a></div>
+                    <div class="specialist-info">
+                        <a href="javascript:void(0)">Gastroenterology</a>
+                    </div>
+                    <div class="specialist-nav-five ms-auto">
+                        <a href="javascript:void(0)"><i class="feather-arrow-right"></i></a>
+                    </div>
                 </div>
             </div>
-            <div _ngcontent-rwq-c80="" class="col-lg-3 col-md-6">
-                <div _ngcontent-rwq-c80="" class="specialist-card d-flex">
-                    <div _ngcontent-rwq-c80="" class="specialist-img"><img _ngcontent-rwq-c80=""
-                            src="assets/img/category/4.png" alt="" class="img-fluid"></div>
-                    <div _ngcontent-rwq-c80="" class="specialist-info"><a _ngcontent-rwq-c80=""
-                            href="javascript:void(0)">
-                            <h4 _ngcontent-rwq-c80="">Cardiologist</h4>
-                        </a>
-                        <p _ngcontent-rwq-c80="">21 Doctors</p>
+            <div class="col-lg-3 col-md-6 aos" data-aos="fade-up">
+                <div class="specialist-card-five d-flex hvr-bounce-to-right">
+                    <div class="specialist-img-five">
+                        <img src="assets/img/icons/icon11.svg" alt="" class="img-fluid">
                     </div>
-                    <div _ngcontent-rwq-c80="" class="specialist-nav ms-auto"><a _ngcontent-rwq-c80=""
-                            href="javascript:void(0)"><i _ngcontent-rwq-c80=""
-                                class="fas fa-long-arrow-alt-right"></i></a></div>
+                    <div class="specialist-info">
+                        <a href="javascript:void(0)">Anesthetics</a>
+                    </div>
+                    <div class="specialist-nav-five ms-auto">
+                        <a href="javascript:void(0)"><i class="feather-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 aos" data-aos="fade-up">
+                <div class="specialist-card-five d-flex hvr-bounce-to-right">
+                    <div class="specialist-img-five">
+                        <img src="assets/img/icons/icon11.svg" alt="" class="img-fluid">
+                    </div>
+                    <div class="specialist-info">
+                        <a href="javascript:void(0)">Pediatrics</a>
+                    </div>
+                    <div class="specialist-nav-five ms-auto">
+                        <a href="javascript:void(0)"><i class="feather-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 aos" data-aos="fade-up">
+                <div class="specialist-card-five d-flex hvr-bounce-to-right">
+                    <div class="specialist-img-five">
+                        <img src="assets/img/icons/icon11.svg" alt="" class="img-fluid">
+                    </div>
+                    <div class="specialist-info">
+                        <a href="javascript:void(0)">Dermatology</a>
+                    </div>
+                    <div class="specialist-nav-five ms-auto">
+                        <a href="javascript:void(0)"><i class="feather-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 aos" data-aos="fade-up">
+                <div class="specialist-card-five d-flex hvr-bounce-to-right">
+                    <div class="specialist-img-five">
+                        <img src="assets/img/icons/icon11.svg" alt="" class="img-fluid">
+                    </div>
+                    <div class="specialist-info">
+                        <a href="javascript:void(0)">Anesthetics</a>
+                    </div>
+                    <div class="specialist-nav-five ms-auto">
+                        <a href="javascript:void(0)"><i class="feather-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 aos" data-aos="fade-up">
+                <div class="specialist-card-five d-flex hvr-bounce-to-right">
+                    <div class="specialist-img-five">
+                        <img src="assets/img/icons/icon11.svg" alt="" class="img-fluid">
+                    </div>
+                    <div class="specialist-info">
+                        <a href="javascript:void(0)">Radiology</a>
+                    </div>
+                    <div class="specialist-nav-five ms-auto">
+                        <a href="javascript:void(0)"><i class="feather-arrow-right"></i></a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
-
-<!-- High Service Section -->
-<section class="high-service-section">
+<!-- /Browse Section Five -->
+<!-- Browse symptoms -->
+<!-- <section class="browse-section-five">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <div class="section-header" data-aos="fade-up">
-                    <h2 class="color-primary">High Quality Service for you</h2>
-                    <p class="color-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <div class="section-header section-header-five text-center aos" data-aos="fade-up">
+                    <h2 class="title-five">Browse by Symptoms</h2>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-2 col-md-4">
-                <div class="high-service-box aos" data-aos="fade-up">
-                    <div class="service-box-inner">
-                        <div class="high-service-img">
-                            <span>
-                                <img src="assets/img/icons/icon1.svg" class="img-fluid" alt="">
-                            </span>
-                        </div>
-                        <div class="overlay">
-                            <div class="pro-icon">
-                                <img src="assets/img/icons/icon1.svg" class="img-fluid" alt="">
-                            </div>
-                            <div class="pro-text">
-                                <h4>Urology</h4>
-                                <p>124 Doctors</p>
-                            </div>
-                        </div>
-                        <h4 class="high-service-head">Urology</h4>
-                        <p class="high-service-text">124 Doctors</p>
+            <div class="col-lg-3 col-md-6 aos" data-aos="fade-up">
+                <div class="specialist-card-five d-flex hvr-bounce-to-right">
+                
+                    <div class="specialist-info">
+                        <a href="javascript:void(0)">Back Pain</a>
+                    </div>
+                    <div class="specialist-nav-five ms-auto">
+                        <a href="javascript:void(0)"><i class="feather-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-2 col-md-4">
-                <div class="high-service-box aos" data-aos="fade-up">
-                    <div class="service-box-inner">
-                        <div class="high-service-img">
-                            <span>
-                                <img src="assets/img/icons/icon2.svg" class="img-fluid" alt="">
-                            </span>
-                        </div>
-                        <div class="overlay">
-                            <div class="pro-icon">
-                                <img src="assets/img/icons/icon2.svg" class="img-fluid" alt="">
-                            </div>
-                            <div class="pro-text">
-                                <h4>Neurology</h4>
-                                <p>21 Doctors</p>
-                            </div>
-                        </div>
-                        <h4 class="high-service-head">Neurology</h4>
-                        <p class="high-service-text">21 Doctors</p>
+            <div class="col-lg-3 col-md-6 aos" data-aos="fade-up">
+                <div class="specialist-card-five d-flex hvr-bounce-to-right">
+                    
+                    <div class="specialist-info">
+                        <a href="javascript:void(0)">UTI</a>
+                    </div>
+                    <div class="specialist-nav-five ms-auto">
+                        <a href="javascript:void(0)"><i class="feather-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-2 col-md-4">
-                <div class="high-service-box aos" data-aos="fade-up">
-                    <div class="service-box-inner">
-                        <div class="high-service-img">
-                            <span>
-                                <img src="assets/img/icons/icon6.svg" class="img-fluid" alt="">
-                            </span>
-                        </div>
-                        <div class="overlay">
-                            <div class="pro-icon">
-                                <img src="assets/img/icons/icon6.svg" class="img-fluid" alt="">
-                            </div>
-                            <div class="pro-text">
-                                <h4>Orthopedic</h4>
-                                <p>50 Doctors</p>
-                            </div>
-                        </div>
-                        <h4 class="high-service-head">Orthopedic</h4>
-                        <p class="high-service-text">50 Doctors</p>
+            <div class="col-lg-3 col-md-6 aos" data-aos="fade-up">
+                <div class="specialist-card-five d-flex hvr-bounce-to-right">
+                   
+                    <div class="specialist-info">
+                        <a href="javascript:void(0)">Flu, cough, or cold</a>
+                    </div>
+                    <div class="specialist-nav-five ms-auto">
+                        <a href="javascript:void(0)"><i class="feather-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-2 col-md-4">
-                <div class="high-service-box aos" data-aos="fade-up">
-                    <div class="service-box-inner">
-                        <div class="high-service-img">
-                            <span>
-                                <img src="assets/img/icons/icon3.svg" class="img-fluid service-img-small mt-2" alt="">
-                            </span>
-                        </div>
-                        <div class="overlay">
-                            <div class="pro-icon">
-                                <img src="assets/img/icons/icon3.svg" class="img-fluid service-img-big" alt="">
-                            </div>
-                            <div class="pro-text">
-                                <h4>Cardiologist</h4>
-                                <p>140 Doctors</p>
-                            </div>
-                        </div>
-                        <h4 class="high-service-head">Cardiologist</h4>
-                        <p class="high-service-text">140 Doctors</p>
+            <div class="col-lg-3 col-md-6 aos" data-aos="fade-up">
+                <div class="specialist-card-five d-flex hvr-bounce-to-right">                    
+                    
+                    <div class="specialist-nav-five ms-auto">
+                        <a href="javascript:void(0)"><i class="feather-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-2 col-md-4">
-                <div class="high-service-box aos" data-aos="fade-up">
-                    <div class="service-box-inner">
-                        <div class="high-service-img">
-                            <span>
-                                <img src="assets/img/icons/icon4.svg" class="img-fluid" alt="">
-                            </span>
-                        </div>
-                        <div class="overlay">
-                            <div class="pro-icon">
-                                <img src="assets/img/icons/icon4.svg" class="img-fluid" alt="">
-                            </div>
-                            <div class="pro-text">
-                                <h4>Dentist</h4>
-                                <p>80 Doctors</p>
-                            </div>
-                        </div>
-                        <h4 class="high-service-head">Dentist</h4>
-                        <p class="high-service-text">80 Doctors</p>
+            <div class="col-lg-3 col-md-6 aos" data-aos="fade-up">
+                <div class="specialist-card-five d-flex hvr-bounce-to-right">
+                  
+                    <div class="specialist-info">
+                        <a href="javascript:void(0)">Fever</a>
+                    </div>
+                    <div class="specialist-nav-five ms-auto">
+                        <a href="javascript:void(0)"><i class="feather-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-2 col-md-4">
-                <div class="high-service-box aos" data-aos="fade-up">
-                    <div class="service-box-inner">
-                        <div class="high-service-img">
-                            <span>
-                                <img src="assets/img/icons/icon5.svg" class="img-fluid" alt="">
-                            </span>
-                        </div>
-                        <div class="overlay">
-                            <div class="pro-icon">
-                                <img src="assets/img/icons/icon5.svg" class="img-fluid" alt="">
-                            </div>
-                            <div class="pro-text">
-                                <h4>Ultrasound</h4>
-                                <p>56 Doctors</p>
-                            </div>
-                        </div>
-                        <h4 class="high-service-head">Ultrasound</h4>
-                        <p class="high-service-text">56 Doctors</p>
+            <div class="col-lg-3 col-md-6 aos" data-aos="fade-up">
+                <div class="specialist-card-five d-flex hvr-bounce-to-right">
+                    
+                    <div class="specialist-info">
+                        <a href="javascript:void(0)">Tooth Pain</a>
+                    </div>
+                    <div class="specialist-nav-five ms-auto">
+                        <a href="javascript:void(0)"><i class="feather-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <div class="high-btn aos" data-aos="fade-up">
-                    <a [routerLink]="'/patients/doctor-profile'" class="btn btn-two">View More</a>
+            <div class="col-lg-3 col-md-6 aos" data-aos="fade-up">
+                <div class="specialist-card-five d-flex hvr-bounce-to-right">
+                   
+                    <div class="specialist-info">
+                        <a href="javascript:void(0)">Ear infection</a>
+                    </div>
+                    <div class="specialist-nav-five ms-auto">
+                        <a href="javascript:void(0)"><i class="feather-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 aos" data-aos="fade-up">
+                <div class="specialist-card-five d-flex hvr-bounce-to-right">
+                 
+                    <div class="specialist-info">
+                        <a href="javascript:void(0)">Sore throat</a>
+                    </div>
+                    <div class="specialist-nav-five ms-auto">
+                        <a href="javascript:void(0)"><i class="feather-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 aos" data-aos="fade-up">
+                <div class="specialist-card-five d-flex hvr-bounce-to-right">
+              
+                    <div class="specialist-info">
+                        <a href="javascript:void(0)">Vomiting</a>
+                    </div>
+                    <div class="specialist-nav-five ms-auto">
+                        <a href="javascript:void(0)"><i class="feather-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 aos" data-aos="fade-up">
+                <div class="specialist-card-five d-flex hvr-bounce-to-right">
+                   
+                    <div class="specialist-info">
+                        <a href="javascript:void(0)">Diarrhea</a>
+                    </div>
+                    <div class="specialist-nav-five ms-auto">
+                        <a href="javascript:void(0)"><i class="feather-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 aos" data-aos="fade-up">
+                <div class="specialist-card-five d-flex hvr-bounce-to-right">
+                  
+                    <div class="specialist-info">
+                        <a href="javascript:void(0)">Dizziness</a>
+                    </div>
+                    <div class="specialist-nav-five ms-auto">
+                        <a href="javascript:void(0)"><i class="feather-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 aos" data-aos="fade-up">
+                <div class="specialist-card-five d-flex hvr-bounce-to-right">
+                   
+                    <div class="specialist-info">
+                        <a href="javascript:void(0)">Asthma</a>
+                    </div>
+                    <div class="specialist-nav-five ms-auto">
+                        <a href="javascript:void(0)"><i class="feather-arrow-right"></i></a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</section>
-<!-- /High Service Section -->
+</section> -->
+<!-- /Browse symptoms -->
 
-<!-- Blog News Section -->
-<section class="blog-news-section">
+<!-- Blog Section Four -->
+<section class="blog-section-four">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <div class="section-header aos" data-aos="fade-up">
-                    <h2 class="color-primary">Blogs and News</h2>
-                    <p class="color-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <div class="section-header-four text-center aos" data-aos="fade-up">
+                    <h2 class="title-four">Our Latest <span class="color-primary">Blogs</span></h2>
+                    <p class="sub-title color-grey">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
                 </div>
             </div>
         </div>
         <div class="row justify-content-center">
             <div class="col-lg-4 col-md-6 d-flex aos" data-aos="fade-up">
-                <div class="blog-news-grid w-100">
-                    <div class="blog-news-img">
+                <div class="grid-blog-four w-100">
+                    <div class="grid-blog-image">
                         <a [routerLink]="'/blog/blog-details'">
-                            <img src="assets/img/blog/blog-01.jpg" class="img-fluid" alt="">
+                            <img class="img-fluid" src="assets/img/blog/blog-01.jpg" alt="News Image">
                         </a>
-                        <div class="overlay"></div>
-                        <div class="blog-news-date">
-                            <a [routerLink]="'/blog/blog-details'">
+                        <div class="blog-title-four">
+                            <a [routerLink]="'/blog/blog-details'" class="btn">Health</a>
+                        </div>
+                        <div class="blog-date-four">
+                            <a href="javascript:void(0)">
                                 <i class="feather-calendar me-2"></i>
-                                <span>10 Dec 2021</span>
+                                <span>4 Jan 2022</span>
                             </a>
                         </div>
                     </div>
-                    <h3 class="blog-news-title">
+                    <div class="blog-info-four">
                         <a [routerLink]="'/blog/blog-details'">How to handle patient body in MRI</a>
-                    </h3>
-                    <div>
-                        <a [routerLink]="'/blog/blog-details'" class="blog-news-arrows">
+                    </div>
+                    <div class="blog-doctors-four">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <a [routerLink]="'/patients/doctor-profile'">
+                                    <img src="assets/img/doctors/doctor-thumb-01.jpg" alt="" class="me-2"><span>Dr. Ruby Perrin</span>
+                                </a>
+                            </div>
+                            <div>
+                                <p>Urology</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="blog-four-content">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    </div>
+                    <div class="blog-four-arrow">
+                        <a [routerLink]="'/blog/blog-details'">
                             <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6 d-flex aos" data-aos="fade-up">
-                <div class="blog-news-grid w-100">
-                    <div class="blog-news-img">
+                <div class="grid-blog-four w-100">
+                    <div class="grid-blog-image">
                         <a [routerLink]="'/blog/blog-details'">
-                            <img src="assets/img/blog/blog-02.jpg" class="img-fluid" alt="">
+                            <img class="img-fluid" src="assets/img/blog/blog-02.jpg" alt="News Image">
                         </a>
-                        <div class="overlay"></div>
-                        <div class="blog-news-date">
-                            <a [routerLink]="'/blog/blog-details'">
+                        <div class="blog-title-four">
+                            <a [routerLink]="'/blog/blog-details'" class="btn">General</a>
+                        </div>
+                        <div class="blog-date-four">
+                            <a href="javascript:void(0)">
                                 <i class="feather-calendar me-2"></i>
-                                <span>18 Dec 2021</span>
+                                <span>13 Feb 2022</span>
                             </a>
                         </div>
                     </div>
-                    <h3 class="blog-news-title">
+                    <div class="blog-info-four">
                         <a [routerLink]="'/blog/blog-details'">Doccure – Making your clinic painless visit?</a>
-                    </h3>
-                    <div>
-                        <a [routerLink]="'/blog/blog-details'" class="blog-news-arrows">
+                    </div>
+                    <div class="blog-doctors-four">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <a [routerLink]="'/patients/doctor-profile'">
+                                    <img src="assets/img/doctors/doctor-thumb-02.jpg" alt="" class="me-2"><span>Dr. Darren Elder</span>
+                                </a>
+                            </div>
+                            <div>
+                                <p>Surgery</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="blog-four-content">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    </div>
+                    <div class="blog-four-arrow">
+                        <a [routerLink]="'/blog/blog-details'">
                             <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6 d-flex aos" data-aos="fade-up">
-                <div class="blog-news-grid w-100">
-                    <div class="blog-news-img">
+                <div class="grid-blog-four w-100">
+                    <div class="grid-blog-image">
                         <a [routerLink]="'/blog/blog-details'">
-                            <img src="assets/img/blog/blog-04.jpg" class="img-fluid" alt="">
+                            <img class="img-fluid" src="assets/img/blog/blog-04.jpg" alt="News Image">
                         </a>
-                        <div class="overlay"></div>
-                        <div class="blog-news-date">
-                            <a [routerLink]="'/blog/blog-details'">
+                        <div class="blog-title-four">
+                            <a [routerLink]="'/blog/blog-details'" class="btn">Neurology</a>
+                        </div>
+                        <div class="blog-date-four">
+                            <a href="javascript:void(0)">
                                 <i class="feather-calendar me-2"></i>
-                                <span>25 Dec 2021</span>
+                                <span>26 Mar 2022</span>
                             </a>
                         </div>
                     </div>
-                    <h3 class="blog-news-title">
+                    <div class="blog-info-four">
                         <a [routerLink]="'/blog/blog-details'">Benefits of consulting with an Online Doctor</a>
-                    </h3>
-                    <div>
-                        <a [routerLink]="'/blog/blog-details'" class="blog-news-arrows">
+                    </div>
+                    <div class="blog-doctors-four">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <a [routerLink]="'/patients/doctor-profile'">
+                                    <img src="assets/img/doctors/doctor-thumb-03.jpg" alt="" class="me-2">	<span>Dr. Angel</span>
+                                </a>
+                            </div>
+                            <div>
+                                <p>Cardiology</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="blog-four-content">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    </div>
+                    <div class="blog-four-arrow">
+                        <a [routerLink]="'/blog/blog-details'">
                             <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <div class="high-btn aos" data-aos="fade-up">
-                    <a [routerLink]="'/blog/blog-details'" class="btn btn-two">View More</a>
-                </div>
-            </div>
+        <div class="text-center">
+            <a [routerLink]="'/blog/blog-details'" class="btn btn-one">View More</a>
         </div>
     </div>
 </section>
-<!-- /Blog News Section -->
+<!-- /Blog Section Four -->
+
 <app-home-index-footer></app-home-index-footer>
