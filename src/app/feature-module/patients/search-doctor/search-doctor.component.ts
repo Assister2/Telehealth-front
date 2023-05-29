@@ -13,6 +13,8 @@ export class SearchDoctorComponent implements OnInit {
   type: string | undefined;
   specialist = "";
   speciality: string | undefined;
+  isHovered: boolean = false;
+
   selDate: any;
   constructor(public commonService: CommonService, public router: Router) { }
   images = [
@@ -38,6 +40,13 @@ export class SearchDoctorComponent implements OnInit {
     this.commonService.getSearchDoctors().subscribe(res => {
       this.doctors = res;
     })
+  }
+  onCardMouseEnter() {
+    this.isHovered = true;
+  }
+  
+  onCardMouseLeave() {
+    this.isHovered = false;
   }
 
   getspeciality() {

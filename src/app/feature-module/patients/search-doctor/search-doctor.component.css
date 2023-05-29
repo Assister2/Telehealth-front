@@ -1,0 +1,82 @@
+.card {
+    /* Add your existing card styles here */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+  }
+  
+  .card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 2px solid #0071dc;
+    transition: box-shadow 0.3s ease-in-out, border-color 0.3s ease-in-out;
+    animation: cardAnimation 0.3s ease-in-out;
+  }
+  
+  @keyframes cardAnimation {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  .doctor-widget .doc-name {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 3px;
+}
+
+.doctor-widget .doc-department {
+  font-size: 15px;
+  font-weight: 400;
+  margin-bottom: 3px;
+  color: #0071dc;
+}
+
+
+.rating i.filled {
+  color: #0071dc;
+}
+
+a {
+  color: #0071dc;
+  
+}
+
+.clini-infos i {
+  color: #0071dc;
+}
+
+.clini-infos li {
+  color: #0071dc;
+  
+}
+.doctor-widget {
+  display: flex;
+  align-items: flex-start;
+}
+
+.doc-info-left {
+  flex: 1;
+}
+
+.doc-info-right {
+  position: relative;
+}
+
+
+
+.vertical-line {
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: -20%;
+  width: 0.08px;
+  background-color: rgba(111, 111, 114, 0.281);
+  transform: translateX(-50%);
+
+
+}
