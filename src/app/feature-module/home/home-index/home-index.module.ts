@@ -14,5 +14,6 @@ import { SharedModule } from 'src/app/shared/module/shared.module';
     HomeIndexHeaderComponent,
   ],
   imports: [CommonModule, HomeIndexRoutingModule, SharedModule],
+  exports: [HomeIndexHeaderComponent, HomeIndexFooterComponent]
 })
 export class HomeIndexModule {}

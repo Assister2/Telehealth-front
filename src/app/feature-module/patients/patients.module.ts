@@ -4,11 +4,12 @@ import { CommonModule } from '@angular/common';
 import { PatientsRoutingModule } from './patients-routing.module';
 import { PatientsComponent } from './patients.component';
 import { SharedModule } from 'src/app/shared/module/shared.module';
-import { HomeOneModule } from '../home/home-one/home-one.module';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { HomeIndexModule } from '../home/home-index/home-index.module';
+
 
 @NgModule({
   declarations: [PatientsComponent, SidebarComponent],
-  imports: [CommonModule, PatientsRoutingModule, HomeOneModule,SharedModule],
+  imports: [CommonModule, PatientsRoutingModule, HomeIndexModule,SharedModule],
 })
 export class PatientsModule {}

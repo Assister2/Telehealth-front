@@ -6,7 +6,7 @@ import { FeatureModuleComponent } from './feature-module.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'home-index',
     pathMatch: 'full',
   },
   {

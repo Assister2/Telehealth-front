@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { PharmacyRoutingModule } from './pharmacy-routing.module';
 import { PharmacyComponent } from './pharmacy.component';
-import { HomeOneModule } from '../home/home-one/home-one.module';
 import { SharedModule } from 'src/app/shared/module/shared.module';
+import { HomeIndexModule } from '../home/home-index/home-index.module';
 
 
 @NgModule({
@@ -14,8 +14,8 @@ import { SharedModule } from 'src/app/shared/module/shared.module';
   imports: [
     CommonModule,
     PharmacyRoutingModule,
-    HomeOneModule,
-    SharedModule
+    SharedModule,
+    HomeIndexModule,
   ]
 })
 export class PharmacyModule { }

@@ -140,6 +140,7 @@ export class HomeIndexComponent implements OnInit {
            }
          }
      };
+     
      ourdoctorsslides = [
       {
         img: "assets/img/doctors/doctor-01.jpg",
