@@ -107,14 +107,11 @@ export class HomeIndexComponent implements OnInit {
     }
     bannerslides = [
       {
-        img: 'assets/img/banner-4.jpg'
+        img: 'assets/img/ah-banner1.jpg'
       },
       {
-        img: 'assets/img/banner-4.jpg'
-      },
-      {
-        img: 'assets/img/banner-4.jpg'
-      },
+        img: 'assets/img/ah-banner2.png'
+      },      
     ]
     ourdoctorsOptions = {
       loop:true,
