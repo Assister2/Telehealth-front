@@ -83,7 +83,7 @@ export class CheckoutComponent implements OnInit {
         email: this.email,
         paid: this.doctorDetails.Price,
       };
-      this.commonService.createPatient(patients).subscribe((patients) => {
+      this.commonService.createPatient(patients).then((patients) => {
         this.allPatients();
         this.getAppointments();
         this.toastr.success('', 'Appointment booked successfully!');

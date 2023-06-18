@@ -17,21 +17,122 @@
                             </div>
                             
                             <!-- Register Form -->
-                            <form>
+                            <form class="form" [formGroup]="form">
                                 <div class="form-group form-focus">
-                                    <input type="text" name="name"  class="form-control floating" [(ngModel)]="name">
-                                    <label class="focus-label">Name</label>
+                                    <!-- <input type="text" name="username"  class="form-control floating" [(ngModel)]="username"> -->
+                                    <input
+                                        type="text"
+                                        formControlName="username"
+                                        class="form-control floating"
+                                        [ngClass]="{ 'is-invalid': submitted && f['username'].errors }"
+                                        [(ngModel)]="username"
+                                    />
+                                    <label class="focus-label">Username</label>
+                                    <div *ngIf="submitted && f['username'].errors" class="invalid-feedback">
+                                        <div *ngIf="f['username'].errors['required']">Username is required</div>
+                                        <div *ngIf="f['username'].errors['minlength']">
+                                          Username must be at least 6 characters
+                                        </div>
+                                        <div *ngIf="f['username'].errors['maxlength']">
+                                          Username must not exceed 20 characters
+                                        </div>
+                                      </div>
                                 </div>
 
                                 <div class="form-group form-focus">
-                                    <input type="text" name="mobile"  class="form-control floating" [(ngModel)]="mobile" max="9">
+                                    <input type="email" 
+											name="email" 
+											formControlName="email" 
+											id="email" 
+											class="form-control floating" 
+											[ngClass]="{ 'is-invalid': submitted && f['email'].errors }"
+											[(ngModel)]="email"
+											>
+                                    <label class="focus-label">Email</label>
+                                    <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+										<div *ngIf="f['email'].errors['required']">Email is required</div>
+										<div *ngIf="f['email'].errors['email']">Email is invalid</div>
+									</div>	
+                                </div>
+
+                                <div class="form-group form-focus">
+                                    <input  type="text" 
+                                        name="mobile"  
+                                        formControlName="mobile"
+                                        class="form-control floating" 
+                                        [(ngModel)]="mobile" max="9"
+                                        id="mobile"
+                                        [ngClass]="{'is-invalid': submitted && f['mobile'].errors }"
+                                    >
                                     <label class="focus-label">Mobile Number</label>
+                                    <div *ngIf="submitted && f['mobile'].errors" class="invalid-feedback">
+                                        <div *ngIf="f['mobile'].errors['required']">mobile is required</div>
+										<div *ngIf="f['mobile'].errors['mobile']">mobile is invalid</div>
+                                    </div>
                                 </div>
+                                    
+                                <div class="form-group radio">
+                                    <p>
+                                        <label class="focus-label col-lg-2 col-md-2">Gender</label>
+                                        <span class="focus-label">
+                                            <input class="focus-label" type="radio" value="male" name="gender" (change)="changeMale()" [ngModel]="gender" required>Male
+                                            <input class="focus-label" type="radio" value="female" name="gender" (change)="changeFemale()" [ngModel]="gender" required>Female
+                                        </span>
+                                        
+                                    </p>
+                                </div>
+                                <!-- (change)="fileChange($event)" -->
+                                <!-- <div class="form-group">
+                                    <input 
+                                        type="file"
+                                        
+                                        placeholder="Upload file"
+                                        accept=".ico,.png,.jpg">
+                                </div> -->
 
                                 <div class="form-group form-focus">
-                                    <input type="password" name="password" class="form-control floating"  [(ngModel)]="password">
-                                    <label class="focus-label">Create Password</label>
-                                </div>
+									<input 	type="password" 
+											name="password" 
+											id="password" 
+											class="form-control floating"
+											formControlName="password"
+											[ngClass]="{ 'is-invalid': submitted && f['password'].errors }" 
+											[(ngModel)]="password"
+											>
+									<label class="focus-label">Password</label>
+									<div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+										<div *ngIf="f['password'].errors['required']">Password is required</div>
+										<div *ngIf="f['password'].errors['minlength']">
+										  Password must be at least 6 characters
+										</div>
+										<div *ngIf="f['password'].errors['maxlength']">
+										  Password must not exceed 40 characters
+										</div>
+									</div>
+								</div>
+                                <div class="form-group">
+                                    <label>Confirm Password</label>
+                                    <input
+                                      type="password"
+                                      name="confirmPassword"
+                                      formControlName="confirmPassword"
+                                      class="form-control floating"
+                                      [ngClass]="{ 'is-invalid': submitted && f['confirmPassword'].errors }"
+                                      [(ngModel)]="confirmPassword"
+                                    />
+                                    <div
+                                      *ngIf="submitted && f['confirmPassword'].errors"
+                                      class="invalid-feedback"
+                                    >
+                                      <div *ngIf="f['confirmPassword'].errors['required']">
+                                        Confirm Password is required
+                                      </div>
+                                      <div *ngIf="f['confirmPassword'].errors['matching']">
+                                        Confirm Password does not match
+                                      </div>
+                                    </div>
+                                  </div>
+
                                 <div class="text-end">
                                     <a class="forgot-link" [routerLink]="'/login'">Already have an account?</a>
                                 </div>
@@ -50,7 +151,20 @@
                                 </div>
                             </form>
                             <!-- /Register Form -->
-                            
+                            <!-- Phone verification -->
+                            <form class="form" *ngIf="verifyShow">
+                                <div class="form-group form-focus">
+                                    <input  type="text" 
+                                        name="verify"  
+                                        formControlName="verify"
+                                        class="form-control floating" 
+                                        [(ngModel)]="verify" max="6"
+                                        id="verify"  
+                                    >
+                                    <label class="focus-label">Verify Mobile</label>
+                                </div>
+                            </form>
+                            <!-- /Phone -->
                         </div>
                     </div>
                 </div>

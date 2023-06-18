@@ -17,21 +17,65 @@
                     <!-- Register Form -->
                     <form action="">
                         <div class="form-group form-focus">
-                            <input type="text" class="form-control floating">
+                            <input type="text" class="form-control floating" class="form-control floating" [(ngModel)]="username">
                             <label class="focus-label">Name</label>
                         </div>
                         <div class="form-group form-focus">
-                            <input type="text" class="form-control floating">
-                            <label class="focus-label">Mobile Number</label>
+                            <input type="email" name="email1"  class="form-control floating" [(ngModel)]="email">
+                            <label class="focus-label">Email</label>
                         </div>
                         <div class="form-group form-focus">
-                            <input type="password" class="form-control floating">
+                            <input type="text" class="form-control floating" class="form-control floating" [(ngModel)]="phone" max="11"> 
+                            <label class="focus-label">Mobile Number</label>
+                        </div>
+                        <div class="form-group radio">
+                            <p>
+                                <label class="focus-label col-lg-2 col-md-2">Gender</label>
+                                <span class="focus-label mb-4">
+                                    <input class="focus-label" type="radio" value="male" name="gender" (change)="changeMale()" [ngModel]="gender" required>Male
+                                    <input class="focus-label" type="radio" value="female" name="gender" (change)="changeFemale()" [ngModel]="gender" required>Female
+                                </span>
+                            </p>
+                            
+                        </div>
+                        <div class="form-group form-focus">
+                            <input type="text" class="form-control floating" class="form-control floating" [(ngModel)]="license" max="6"> 
+                            <label class="focus-label">License</label>
+                        </div>
+                        <div class="form-group dropdown">
+                            <div class="d-grid">
+                                <!-- <select
+                                  class="custom-select mb-3"
+                                  (change)="changeSpeciality($event)"
+                                  formControlName="speciality"
+                                >
+                                  <option value="">Choose speciality</option>
+                                  <option *ngFor="let speciality of speciality_list" [ngValue]="speciality_list">
+                                    {{ speciality }}
+                                  </option>
+                                </select> -->
+                                <select name="speciality" 
+                                    class="custom-select mb-3 form-control floating" [(ngModel)]="speciality" >
+                                    <option>Select Speciality</option>
+                                    <option [value]="specialities.speciality" *ngFor="let specialities of speciality_list" >
+                                        {{ specialities.speciality}}
+                                    </option>
+                                </select>
+                              </div>
+                        </div>
+                        
+                        <div class="form-group form-focus">
+                            <input type="password" name="password" class="form-control floating"  [(ngModel)]="password" min="6">
                             <label class="focus-label">Create Password</label>
+                        </div>
+                        <div class="form-group form-focus">
+                            <input type="password" name="confirm_password" class="form-control floating"  [(ngModel)]="confirm_password" min="6">
+                            <label class="focus-label">Confirm Password</label>
                         </div>
                         <div class="text-end">
                             <a class="forgot-link" [routerLink]="'/login'">Already have an account?</a>
                         </div>
-                        <button class="btn btn-primary w-100 btn-lg login-btn" type="submit">Signup</button>
+                        <button class="btn btn-primary w-100 btn-lg login-btn" type="submit" (click)="signup()">Signup</button>
                         <div class="login-or">
                             <span class="or-line"></span>
                             <span class="span-or">or</span>

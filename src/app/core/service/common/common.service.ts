@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { BehaviorSubject } from 'rxjs';
-
+import axios from 'axios';
 @Injectable({
   providedIn: 'root'
 })
@@ -55,7 +55,7 @@ export class CommonService {
   ];
 
   messages:any = '';
-  SERVER_URL: string = 'http://localhost:8080/api/';
+  SERVER_URL: string = 'http://192.168.108.55:8080/api/v1/';
   public message: BehaviorSubject<String> = new BehaviorSubject<String>('');
   constructor(public http: HttpClient) {
     this.message = new BehaviorSubject(this.messages);
@@ -137,11 +137,12 @@ export class CommonService {
   }
 
   createDoctor(data:any) {
-    return this.http.post(`${this.SERVER_URL + 'doctors'}`, data);
+    return axios.post(`${this.SERVER_URL + 'auth/register'}`, data);
   }
 
   createPatient(data:any) {
-    return this.http.post(`${this.SERVER_URL + 'patients'}`, data);
+    // return this.http.post(`${this.SERVER_URL + 'patients'}`, data);
+    return axios.post(`${this.SERVER_URL + 'auth/register'}`, data);
   }
 
   getPatientDetails(id:any) {
@@ -249,5 +250,12 @@ export class CommonService {
 
   deletePharmacy(id:any) {
     return this.http.delete(`${this.SERVER_URL + 'pharmacy'}/${id}`);
+  }
+  login (data:any){
+    return axios.post(`${this.SERVER_URL + 'auth/login'}`, data);
+  }
+  getSpeciality_1(){
+    return axios.post(`${this.SERVER_URL + 'specialities'}`);
+    
   }
 }
