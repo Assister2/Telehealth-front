@@ -9,21 +9,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FeatureModuleModule } from './feature-module/feature-module.module';
 import { SharedModule } from './shared/module/shared.module';
 import { SocialLoginModule, GoogleLoginProvider, SocialAuthServiceConfig  } from 'angularx-social-login';
-import { environment } from 'src/environments/environment';
+// import { environment } from 'src/environments/environment';
+// import { NgxMatIntlTelInputComponent } from 'ngx-mat-intl-tel-input';
+import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { LoginComponent } from './feature-module/login/login.component';
 import { AuthService } from '../app/core/google/authentication/auth.service';
-// const config = new SocialAuthServiceConfig([
-//   {
-//     id: GoogleLoginProvider.PROVIDER_ID,
-//     provider: new GoogleLoginProvider("1001178267386-ehtqgbqbp7bb7gfga8gpb2efv5h4vcn6.apps.googleusercontent.com"),
-//   },
-// ]);
-// const CLIENT_ID = environment.client_Id;
-// export function provideConfig() {
-//   // return config;
-// }
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -32,6 +27,8 @@ import { AuthService } from '../app/core/google/authentication/auth.service';
     HttpClientModule,
     BrowserAnimationsModule,
     FeatureModuleModule,
+    // NgxMatIntlTelInputComponent,
+    NgxIntlTelInputModule,
     ReactiveFormsModule,
     SharedModule,
     SocialLoginModule,

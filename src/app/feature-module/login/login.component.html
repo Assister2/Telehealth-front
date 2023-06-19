@@ -21,12 +21,12 @@
 											formControlName="email" 
 											id="email" 
 											class="form-control floating" 
-											[ngClass]="{ 'is-invalid': submitted && f['email'].errors }"
+											[ngClass]="{ 'is-invalid': (f['email'].touched || f['email'].dirty) && f['email'].errors }"
 											
 											[(ngModel)]="email"
 											>
 									<label class="focus-label">Email</label>
-									<div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+									<div *ngIf=" (f['email'].touched || f['email'].dirty) && f['email'].errors" class="invalid-feedback">
 										<div *ngIf="f['email'].errors['required']">Email is required</div>
 										<div *ngIf="f['email'].errors['email']">Email is invalid</div>
 									</div>	
@@ -37,11 +37,11 @@
 											id="password" 
 											class="form-control floating"
 											formControlName="password"
-											[ngClass]="{ 'is-invalid': submitted && f['password'].errors }" 
+											[ngClass]="{ 'is-invalid': (f['password'].touched || f['password'].dirty) && f['password'].errors }" 
 											[(ngModel)]="password"
 											>
 									<label class="focus-label">Password</label>
-									<div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+									<div *ngIf="(f['password'].touched || f['password'].dirty) && f['password'].errors" class="invalid-feedback">
 										<div *ngIf="f['password'].errors['required']">Password is required</div>
 										<div *ngIf="f['password'].errors['minlength']">
 										  Password must be at least 6 characters
@@ -61,22 +61,16 @@
 										(click)="login(this.email,this.password)">
 										Login
 								</button>
-								<button
-									type="button"
-									(click)="onReset()"
-									class="btn btn-warning w-100 btn-lg login-btn"
-								>
-									Reset
-								</button>
+								
 								<div class="login-or">
 									<span class="or-line"></span>
 									<span class="span-or">or</span>
 								</div>
 								<div class="row form-row social-login">
-									<div class="col-6">
+									<!-- <div class="col-6">
 										<a href="javascript:void(0)" class="btn btn-facebook w-100"><i class="fab fa-facebook-f me-1"></i> Login</a>
-									</div>
-									<div class="col-6">
+									</div> -->
+									<div class="col-12">
 
 										<a class="btn btn-google w-100" 
 										

@@ -1,26 +1,40 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { FormGroup,  FormBuilder,  Validators, FormControl, AbstractControl } from '@angular/forms';
 import { CommonService } from 'src/app/core/service/service.index';
-
+import { AuthService } from '../../../core/google/authentication/auth.service';
+import Validation from '../../login/validation';
 @Component({
   selector: 'app-doctor-register',
   templateUrl: './doctor-register.component.html',
   styleUrls: ['./doctor-register.component.css']
 })
 export class DoctorRegisterComponent implements OnInit {
+  form: FormGroup = new FormGroup({
+    username: new FormControl(''),
+    email: new FormControl(''),
+    mobile: new FormControl(''),
+    license: new FormControl(''),
+    password: new FormControl(''),
+    confirmPassword: new FormControl(''),
+  });
   username = '';
-  phone = '';
+  mobile = '';
   email = '';
   license = '';
   gender = '';
   role = '';
   password = '';
-  confirm_password = '';
+  confirmPassword = '';
   address = '';
   speciality = '';
+  verify = '';
+  verifyShow : boolean = false;
+  isVerify : boolean = false;
   isPatient: boolean = false;
-  isSubmitted : boolean = false;
+  registerForm : FormGroup | undefined;
+  submitted : boolean = false;
   speciality_list: any = [];
   doctors: any = [];
   patients: any = [];
@@ -30,11 +44,10 @@ export class DoctorRegisterComponent implements OnInit {
   constructor(
     private toastr: ToastrService,
     public commonService: CommonService,
-    public router: Router
+    private formBuilder: FormBuilder,
+    public router: Router,
+    public authService: AuthService
   ) {}
-  // registrationForm = this.fb.group({
-  //   speciality: ['', [Validators.required]],
-  // });
 
   ngOnInit(): void {
     this.getDoctors();
@@ -44,44 +57,79 @@ export class DoctorRegisterComponent implements OnInit {
       $(this).parents('.form-focus').toggleClass('focused', (e.type === 'focus' || this.value.length > 0));
       }).trigger('blur');
     }
+    this.form = this.formBuilder.group({
+      username: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(6),
+          Validators.maxLength(20)
+        ]
+      ],
+      email: ['', [Validators.required, Validators.email]],
+      mobile: ['', [Validators.required]],
+      license: ['', [Validators.required]],
+      speciality: ['', [Validators.required]],
+      password: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(6),
+          Validators.maxLength(40)
+        ]
+      ],
+      confirmPassword: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(6),
+          Validators.maxLength(40)
+        ]
+      ],
+      acceptTerms: [false, Validators.requiredTrue]
+    },
+    {
+      validators: [Validation.match('password', 'confirmPassword')]
+    }
+  );
+  this.registerForm = this.formBuilder.group({
+    username : ['', [Validators.required]],
+    email : ['', Validators.required],
+    mobile : ['', Validators.required],
+    license : ['', Validators.required],
+    speciality: ['', Validators.required],
+    password : ['', Validators.required],
+    confirmPassword : ['', Validators.required]
+  });
   }
   signup() {
-    if (this.username === '' || this.phone === '' || this.password === '' || this.email === '' || this.license === '' || this.confirm_password === '') {
+    if (this.username === '' || this.mobile === '' || this.password === '' || this.email === '' || this.license === '' || this.confirmPassword === '') {
       this.toastr.error('', 'Please enter mandatory field!');
     } else {
-      if (!this.isPatient) {
-        let params = {
-          username: this.username,
-          email: this.email,
-          license: this.license,
-          role: 'doctor',
-          gender: this.gender,
-          speciality: this.speciality,
-          phone: this.phone,
-          password: this.password,
-          confirm_password: this.confirm_password
-        };
+      this.submitted = true;
+      let params = {
+        username: this.username,
+        email: this.email,
+        license: this.license,
+        role: 'doctor',
+        gender: this.gender,
+        speciality: this.speciality,
+        phone: this.mobile,
+        password: this.password
+      };
+      if(this.form.invalid)
+      {
+        console.log("SIGNUP doctor", params)
         this.commonService.createDoctor(params).then((res) => {
-          this.toastr.success('', 'Register successfully!');
-          this.router.navigate(['/doctor-register-step1']);
-        });
-      } else {
-        let params = {
-          username: this.username,
-          email: this.email,
-          role: 'user',
-          gender: this.gender,
-          phone: this.phone,
-          password: this.password,
-          confirm_password: this.confirm_password
-        };
-        
-        
-        this.commonService.createPatient(params).then((res) => {
-          this.toastr.success('', 'Register successfully!');
-          this.router.navigate(['/patient-register-step1']);
+          // this.toastr.success('', 'Register successfully!');
+          // this.router.navigate(['/doctor-register-step1']);
+          this.verifyShow = true;
+        }).catch((error)=>{
+          console.log(error)
+          this.toastr.error('',error.response.data.errors[0].messages);
         });
       }
+      
     }
   }
   getDoctors() {
@@ -95,18 +143,45 @@ export class DoctorRegisterComponent implements OnInit {
   changeFemale(){
     this.gender = 'female';
   }
+  verifyCode(): void{
+    let code = {
+      code : this.verify,
+      user : {
+        username: this.username,
+        email: this.email,
+        license: this.license,
+        role: 'doctor',
+        gender: this.gender,
+        speciality: this.speciality,
+        phone: this.mobile,
+        password: this.password
+      }
+    };
+    this.commonService.sendCode(code).then((res)=>{
+      this.toastr.success('', 'Register successfully!');
+      this.router.navigate(['/home']);
+    })
+    .catch((error)=>{
+      console.log(error)
+      this.toastr.error('',error.response.data.errors[0].messages);
+      this.verifyShow = false;
+      this.submitted = false;
+    })
+  }
   getSpeciality(){
-
     this.commonService.getSpeciality_1().then((res)=>{
       this.speciality_list = res.data;
-      // console.log(res)
-      // this.speciality_list = [];
-      //   for (const item in res) {
-      //       console.log(item)
-      //       this.speciality_list.push(item);
-      //   }
-      //   console.log(this.speciality_list)
     })
+  }
+  get f(): { [key: string]: AbstractControl } {
+    return this.form.controls;
+  }
+  checkType(event:any) {
+    if (event.target.checked) {
+      this.gender = event.target.value;
+    } else {
+      this.gender = "";
+    }
   }
 
 }

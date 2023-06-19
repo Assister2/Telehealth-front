@@ -22,12 +22,11 @@ export class AuthService {
     return this.afAuth
       .signInWithPopup(provider)
       .then((result: any) => {
-        console.log('You have been successfully logged in!', result );
+
         localStorage.setItem("displayName", result.user?.displayName);
         localStorage.setItem("email", result.user?.email);
-        this.toastr.success('', 'Register successfully!');
+        this.toastr.success('', 'You have been successfully logged in!');
         this.router.navigate(['/home']);
-        // alert("user name is " + result.user?.displayName);
       })
       .catch((error) => {
         console.log(error);

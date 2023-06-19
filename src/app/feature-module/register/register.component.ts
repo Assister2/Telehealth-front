@@ -2,9 +2,10 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup,  FormBuilder,  Validators, FormControl, AbstractControl } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-// import {}
 import { CommonService } from 'src/app/core/service/service.index';
 import Validation from './validation';
+import { SearchCountryField, CountryISO, PhoneNumberFormat } from 'ngx-intl-tel-input';
+import { AuthService } from '../../core/google/authentication/auth.service';
 // import { fileURLToPath } from 'url';
 
 @Component({
@@ -28,14 +29,9 @@ export class RegisterComponent implements OnInit {
   verify = '';
   verifyShow : boolean = false;
   isVerify : boolean = false;
-  // image = new FormData();
-  // license = '';
   gender = '';
-  // role = '';
-  // speciality = '';
   password = '';
   confirmPassword = '';
-  // address = '';
   registerForm : FormGroup | undefined;
   submitted: boolean = false;
   isPatient: boolean = true;
@@ -48,19 +44,17 @@ export class RegisterComponent implements OnInit {
     private toastr: ToastrService,
     public commonService: CommonService,
     private formBuilder: FormBuilder,
-    public router: Router
+    public router: Router,
+    public authService: AuthService
   ) {}
 
   ngOnInit(): void {
-    // this.getpatients();
-    // this.getDoctors();
     if($('.floating').length > 0 ){
       $('.floating').on('focus blur',  (e: { type: string; }) => {
       $(this).parents('.form-focus').toggleClass('focused', (e.type === 'focus' || this.value.length > 0));
       }).trigger('blur');
     }
-    this.form = this.formBuilder.group(
-      {
+    this.form = this.formBuilder.group({
         username: [
           '',
           [
@@ -79,7 +73,7 @@ export class RegisterComponent implements OnInit {
             Validators.maxLength(40)
           ]
         ],
-        confirmassword: [
+        confirmPassword: [
           '',
           [
             Validators.required,
@@ -115,54 +109,28 @@ export class RegisterComponent implements OnInit {
   }
 
   signup() {
-    if (this.username === '' || this.mobile === '' || this.password === '' || this.email === '' || this.confirmPassword === '') {
+    if (this.username === '' || this.mobile === '' || this.password === '' || this.email === '' || this.confirmPassword === '' || this.gender === '') {
       this.toastr.error('', 'Please enter mandatory field!');
-    } else {
-      console.log("mandatory", this.verifyShow, this.isVerify)
+    }else{
       this.submitted = true;
-      if (!this.isPatient) {
-        // console.log("mandatory")
-        // let params = {
-        //   username: this.username,
-        //   email: this.email,
-        //   // license: this.license,
-        //   role: 'doctor',
-        //   gender: this.gender,
-        //   // speciality: this.speciality,
-        //   mobile: this.mobile,
-        //   password: this.password,
-        //   confirmPassword: this.confirmPassword
-        // };
-        
-        // if (this.form.invalid) {
-        //   this.verifyShow = true;
-        //   this.commonService.createDoctor(params).then((res) => {
-        //   this.toastr.success('', 'Register successfully!');
-        //   this.router.navigate(['/doctor-register-step1']);
-        // });}
-      }else {
-        console.log("maandatory patient", this.verifyShow, this.isVerify)
-        this.verifyShow = true;
-        console.log("maandatory patient", this.verifyShow, this.isVerify, this.form)
-        let params = {
-          username: this.username,
-          email: this.email,
-          role: 'user',
-          gender: this.gender,
-          phone: this.mobile,
-          password: this.password,
-          confirmPassword: this.confirmPassword
-        };
-        this.submitted = true;
-        console.log("data", params)
-        if (this.form.invalid){
+      let params = {
+        username: this.username,
+        email: this.email,
+        role: 'user',
+        gender: this.gender,
+        phone: this.mobile,
+        password: this.password
+      };
+      if (this.form.invalid){
+        this.commonService.createPatient(params).then((res) => {
+          // this.toastr.success('', 'Register successfully!');
+          // this.router.navigate(['/patient-register-step1']);
           this.verifyShow = true;
-          console.log("verify", this.verifyShow, this.isVerify)
-          this.commonService.createPatient(params).then((res) => {
-            this.toastr.success('', 'Register successfully!');
-            this.router.navigate(['/patient-register-step1']);
-          });
-        }
+        })
+        .catch((error)=>{
+          console.log(error)
+          this.toastr.error('',error.response.data.errors[0].messages);
+        });
       }
     }
   }
@@ -174,6 +142,40 @@ export class RegisterComponent implements OnInit {
   }
   get f(): { [key: string]: AbstractControl } {
     return this.form.controls;
+  }
+  checkType(event:any) {
+    if (event.target.checked) {
+      this.gender = event.target.value;
+    } else {
+      this.gender = "";
+    }
+  }
+  onReset(): void {
+    this.submitted = false;
+    this.form.reset();
+  }
+  verifyCode(): void{
+    let code = {
+      code : this.verify,
+      user : {
+        username: this.username,
+        email: this.email,
+        role: 'user',
+        gender: this.gender,
+        phone: this.mobile,
+        password: this.password
+      }
+    };
+    this.commonService.sendCode(code).then((res)=>{
+      this.toastr.success('', 'Register successfully!');
+      this.router.navigate(['/home-index']);
+    })
+    .catch((error)=>{
+      console.log(error)
+      this.toastr.error('',error.response.data.errors[0].messages);
+      this.verifyShow = false;
+      this.submitted = false;
+    })
   }
   changeMale(){
     this.gender = 'male';

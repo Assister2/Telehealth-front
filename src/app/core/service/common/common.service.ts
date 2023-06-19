@@ -55,7 +55,7 @@ export class CommonService {
   ];
 
   messages:any = '';
-  SERVER_URL: string = 'http://192.168.108.55:8080/api/v1/';
+  SERVER_URL: string = 'http://192.168.108.55:8100/api/v1/';
   public message: BehaviorSubject<String> = new BehaviorSubject<String>('');
   constructor(public http: HttpClient) {
     this.message = new BehaviorSubject(this.messages);
@@ -255,7 +255,9 @@ export class CommonService {
     return axios.post(`${this.SERVER_URL + 'auth/login'}`, data);
   }
   getSpeciality_1(){
-    return axios.post(`${this.SERVER_URL + 'specialities'}`);
-    
+    return axios.get(`${this.SERVER_URL + 'specialities'}`);
+  }
+  sendCode(data:any){
+    return axios.post(`${this.SERVER_URL+ 'auth/verify'}`,data);
   }
 }

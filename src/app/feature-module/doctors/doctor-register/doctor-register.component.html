@@ -15,45 +15,93 @@
                     </div>
                     
                     <!-- Register Form -->
-                    <form action="">
+                    <form class="form" [formGroup]="form" *ngIf=" verifyShow == false">
                         <div class="form-group form-focus">
-                            <input type="text" class="form-control floating" class="form-control floating" [(ngModel)]="username">
-                            <label class="focus-label">Name</label>
+                            <!-- <input type="text" name="username"  class="form-control floating" [(ngModel)]="username"> -->
+                            <input
+                                type="text"
+                                formControlName="username"
+                                class="form-control floating"
+                                [ngClass]="{ 'is-invalid': (f['username'].touched || f['username'].dirty) && f['username'].errors} "
+                            
+                                [(ngModel)]="username"
+                            />
+                            <label class="focus-label">Username</label>
+                            <div *ngIf=" (f['username'].touched || f['username'].dirty) && f['username'].errors " class="invalid-feedback">
+                                <div *ngIf="f['username'].errors['required']">Username is required</div>
+                                <div *ngIf="f['username'].errors['minlength']">
+                                  Username must be at least 6 characters
+                                </div>
+                                <div *ngIf="f['username'].errors['maxlength']">
+                                  Username must not exceed 20 characters
+                                </div>
+                              </div>
                         </div>
+
                         <div class="form-group form-focus">
-                            <input type="email" name="email1"  class="form-control floating" [(ngModel)]="email">
+                            <input type="email" 
+                                    name="email" 
+                                    formControlName="email" 
+                                    id="email" 
+                                    class="form-control floating" 
+                                    [ngClass]="{ 'is-invalid': (f['email'].touched || f['email'].dirty) && f['email'].errors }"
+                                    [(ngModel)]="email"
+                                    >
                             <label class="focus-label">Email</label>
+                            <div *ngIf="(f['email'].touched || f['email'].dirty) && f['email'].errors" class="invalid-feedback">
+                                <div *ngIf="f['email'].errors['required']">Email is required</div>
+                                <div *ngIf="f['email'].errors['email']">Email is invalid</div>
+                            </div>	
                         </div>
+
                         <div class="form-group form-focus">
-                            <input type="text" class="form-control floating" class="form-control floating" [(ngModel)]="phone" max="11"> 
+                            <input  type="text" 
+                                name="mobile"  
+                                formControlName="mobile"
+                                class="form-control floating" 
+                                [(ngModel)]="mobile" max="9"
+                                id="mobile"
+                                [ngClass]="{'is-invalid': 
+                                (f['mobile'].touched ||
+                                 f['mobile'].dirty) &&
+                                 f['mobile'].errors }"
+                            >
                             <label class="focus-label">Mobile Number</label>
+                            <div *ngIf="(f['mobile'].touched || f['mobile'].dirty) && f['mobile'].errors" class="invalid-feedback">
+                                <div *ngIf="f['mobile'].errors['required']">mobile is required</div>
+                                <div *ngIf="f['mobile'].errors['mobile']">mobile is invalid</div>
+                            </div>
                         </div>
-                        <div class="form-group radio">
-                            <p>
-                                <label class="focus-label col-lg-2 col-md-2">Gender</label>
-                                <span class="focus-label mb-4">
-                                    <input class="focus-label" type="radio" value="male" name="gender" (change)="changeMale()" [ngModel]="gender" required>Male
-                                    <input class="focus-label" type="radio" value="female" name="gender" (change)="changeFemale()" [ngModel]="gender" required>Female
-                                </span>
-                            </p>
+
+                        <div class="form-group form-focus">
+                            <input type="text" id="license" class="form-control floating" formControlName="license"
+                                [ngClass]="{ 'is-invalid': (f['license'].touched || f['license'].dirty) && f['license'].errors }"
+                                [(ngModel)]="license" max="6"> 
+                            <label class="focus-label">License</label>
+                            <div *ngIf="(f['license'].touched || f['license'].dirty) && f['license'].errors" class="invalid-feedback">
+                                <div *ngIf="f['license'].errors['required']">license is required</div>
+                                <div *ngIf="f['license'].errors['license']">license is invalid</div>
+                            </div>
+                        </div>
+                            
+                        <div class="form-group radio d-flex filter-widget">
+                            <div class="radio">
+                                <label class="custom_check">
+                                    <input type="checkbox" name="gender_type" value="Male"  (click)="checkType($event)"  [checked]="gender === 'Male'">
+                                    <span class="checkmark"></span> Male
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label class="custom_check">
+                                    <input type="checkbox" name="gender_type" value="Female"  (click)="checkType($event)"  [checked]="gender === 'Female'">
+                                    <span class="checkmark"></span> Female
+                                </label>
+                            </div>
                             
                         </div>
-                        <div class="form-group form-focus">
-                            <input type="text" class="form-control floating" class="form-control floating" [(ngModel)]="license" max="6"> 
-                            <label class="focus-label">License</label>
-                        </div>
+                        
                         <div class="form-group dropdown">
                             <div class="d-grid">
-                                <!-- <select
-                                  class="custom-select mb-3"
-                                  (change)="changeSpeciality($event)"
-                                  formControlName="speciality"
-                                >
-                                  <option value="">Choose speciality</option>
-                                  <option *ngFor="let speciality of speciality_list" [ngValue]="speciality_list">
-                                    {{ speciality }}
-                                  </option>
-                                </select> -->
                                 <select name="speciality" 
                                     class="custom-select mb-3 form-control floating" [(ngModel)]="speciality" >
                                     <option>Select Speciality</option>
@@ -63,15 +111,48 @@
                                 </select>
                               </div>
                         </div>
-                        
                         <div class="form-group form-focus">
-                            <input type="password" name="password" class="form-control floating"  [(ngModel)]="password" min="6">
-                            <label class="focus-label">Create Password</label>
+                            <input 	
+                                type="password" 
+                                name="password" 
+                                id="password" 
+                                class="form-control floating"
+                                formControlName="password"
+                                [ngClass]="{ 'is-invalid': (f['password'].touched || f['password'].dirty) && f['password'].errors }" 
+                                [(ngModel)]="password" />
+                            <label class="focus-label">Password</label>
+                            <div *ngIf="(f['password'].touched || f['password'].dirty) && f['password'].errors" class="invalid-feedback">
+                                <div *ngIf="f['password'].errors['required']">Password is required</div>
+                                <div *ngIf="f['password'].errors['minlength']">
+                                  Password must be at least 6 characters
+                                </div>
+                                <div *ngIf="f['password'].errors['maxlength']">
+                                  Password must not exceed 40 characters
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group form-focus">
-                            <input type="password" name="confirm_password" class="form-control floating"  [(ngModel)]="confirm_password" min="6">
-                            <label class="focus-label">Confirm Password</label>
+                            <input
+                              type="password"
+                              name="confirmPassword"
+                              formControlName="confirmPassword"
+                              class="form-control floating"
+                              [ngClass]="{ 'is-invalid': (f['confirmPassword'].touched || f['confirmPassword'].dirty) && f['confirmPassword'].errors }"
+                              [(ngModel)]="confirmPassword"
+                            />
+                            <label class="focus-label">confirm Password</label>
+                            <div
+                              *ngIf="(f['confirmPassword'].touched || f['confirmPassword'].dirty) && f['confirmPassword'].errors"
+                              class="invalid-feedback">
+                              <div *ngIf="f['confirmPassword'].errors['required']">
+                                Confirm Password is required
+                              </div>
+                              <div *ngIf="f['confirmPassword'].errors['matching']">
+                                Confirm Password does not match
+                              </div>
+                            </div>
                         </div>
+
                         <div class="text-end">
                             <a class="forgot-link" [routerLink]="'/login'">Already have an account?</a>
                         </div>
@@ -81,16 +162,38 @@
                             <span class="span-or">or</span>
                         </div>
                         <div class="row form-row social-login">
-                            <div class="col-6">
-                                <a href="javascript:void(0)" class="btn btn-facebook w-100"><i class="fab fa-facebook-f me-1"></i> Login</a>
-                            </div>
-                            <div class="col-6">
-                                <a href="javascript:void(0)" class="btn btn-google w-100"><i class="fab fa-google me-1"></i> Login</a>
+                            <div class="col-12">
+
+                                <a class="btn btn-google w-100" 
+                                
+                                 (click)="authService.GoogleAuth()"><i class="fab fa-google me-1"></i> Login</a>
                             </div>
                         </div>
                     </form>
                     <!-- /Register Form -->
-                    
+                    <!-- Phone verification -->
+                    <form class="form" *ngIf="verifyShow == true && submitted== true ">
+                        <div class="form-group form-focus">
+                            <input  type="text" 
+                                name="verify"  
+                                
+                                class="form-control floating" 
+                                [(ngModel)]="verify" max="6"
+                                id="verify"  
+                            >
+                            <label class="focus-label">Verify Mobile</label>
+                        </div>
+                        <div>
+                            <button
+                                type="button"
+                                (click)="verifyCode()"
+                                class="btn btn-primary w-100 btn-lg login-btn">
+                                Send Code
+                            </button>
+                        </div>
+                        
+                    </form>
+                    <!-- /Phone -->
                 </div>
             </div>
         </div>

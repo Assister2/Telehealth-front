@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Event, NavigationStart, Router } from '@angular/router';
 import { CommonService } from 'src/app/core/service/service.index';
-
+import { AuthService } from '../../core/google/authentication/auth.service';
 @Component({
   selector: 'app-doctors',
   templateUrl: './doctors.component.html',

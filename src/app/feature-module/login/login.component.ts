@@ -14,15 +14,9 @@ import Validation from './validation';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  // title = 'Angular Form Validation Tutorial';
-  // angForm :  FormGroup = new FormGroup();
   form: FormGroup = new FormGroup({
-    // fullname: new FormControl(''),
-    // username: new FormControl(''),
     email: new FormControl(''),
     password: new FormControl(''),
-    // confirmPassword: new FormControl(''),
-    // acceptTerms: new FormControl(false),
   });
   loginForm : FormGroup | undefined;
   socialUser! : SocialUser;
@@ -44,18 +38,10 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     public authService: AuthService
   ) {
-    // this.username = '';
-    // this.password = '';
-    // this.doctors = [];
-    // this.patients = [];
-    // this.createForm();
+
   }
 
   ngOnInit(): void {
-    // this.authService.authState.subscribe(user =>{
-    //   this.user = user;
-    //   console.log("googling", user)
-    // });
     this.form = this.formBuilder.group(
       {
         email: ['', [Validators.required, Validators.email]],
@@ -77,11 +63,7 @@ export class LoginComponent implements OnInit {
       email : ['', Validators.required],
       password : ['', Validators.required]
     });
-    // this.authService.authState.subscribe((user) => {
-    //   this.socialUser = user;
-    //   this.isLoggedin = (user != null);
-    //   console.log(this.socialUser);
-    // });
+
     
     if($('.floating').length > 0 ){
       $('.floating').on('focus blur',  (e:any) => {
@@ -89,12 +71,6 @@ export class LoginComponent implements OnInit {
       }).trigger('blur');
     }
   }
-  // loginWithGoogle(): void {
-  //   this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
-  // }
-  // logOut(): void {
-  //   this.authService.signOut();
-  // }
   checkType(event:any) {
     this.isPatient = event.target.checked ? true : false;
   }
@@ -103,14 +79,21 @@ export class LoginComponent implements OnInit {
       email : this.email,
       password : this.password
     }
-    console.log("22222", params, this.form.invalid)
     this.submitted = true;
-    if (this.form.invalid) {
-      console.log("22222", params)
+    if (this.form.invalid){
       this.commonService.login(params).then((res)=>{
         this.toastr.success('', 'Login successfully!');
-        this.router.navigate(['/home']);
-      });
+        if(res.data.user.role == 'user'){
+          this.router.navigate(['/home-index']);
+        }
+        else{
+          this.router.navigate(['/home']);
+        }
+      })
+      .catch((error)=>{
+        console.log(error)
+        this.toastr.error('',error.response.data.message);
+      });;
     }
     
   }
@@ -130,18 +113,4 @@ export class LoginComponent implements OnInit {
   get f(): { [key: string]: AbstractControl } {
     return this.form.controls;
   }
-  onReset(): void {
-    this.submitted = false;
-    this.form.reset();
-  }
-  // public signInWithGoogle(): void{
-  //   console.log("#@$#$#$")
-  //   this.authService.signIn(GoogleLoginProvider.PROVIDER_ID)
-  //     .then((response)=>{
-  //       console.log(response);
-  //     })
-  //     .catch((error) => {
-  //       console.error(error);
-  //     });
-  // }
 }

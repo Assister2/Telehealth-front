@@ -1,0 +1,9 @@
+.btn-google {
+    background-color: #dd4b39;
+    color: #fff;
+    font-size: 13px;
+    padding: 8px 12px;
+}
+.social-login .btn:hover, .social-login .btn:focus {
+	color: #ffffff;
+}
