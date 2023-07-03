@@ -15,15 +15,18 @@ import { AuthService } from '../../core/google/authentication/auth.service';
 })
 export class RegisterComponent implements OnInit {
   form: FormGroup = new FormGroup({
-    // fullname: new FormControl(''),
-    username: new FormControl(''),
+    firstname: new FormControl(''),
+    middlename: new FormControl(''),
+    lastname: new FormControl(''),
     email: new FormControl(''),
     mobile: new FormControl(''),
     password: new FormControl(''),
     confirmPassword: new FormControl(''),
     // acceptTerms: new FormControl(false),
   });
-  username = '';
+  firstname = '';
+  middlename = '';
+  lastname = '';
   mobile = '';
   email = '';
   verify = '';
@@ -55,12 +58,22 @@ export class RegisterComponent implements OnInit {
       }).trigger('blur');
     }
     this.form = this.formBuilder.group({
-        username: [
+        firstname: [
           '',
           [
             Validators.required,
-            Validators.minLength(6),
-            Validators.maxLength(20)
+          ]
+        ],
+        middlename: [
+          '',
+          [
+            Validators.required,
+          ]
+        ],
+        lastname: [
+          '',
+          [
+            Validators.required,
           ]
         ],
         email: ['', [Validators.required, Validators.email]],
@@ -87,13 +100,15 @@ export class RegisterComponent implements OnInit {
         validators: [Validation.match('password', 'confirmPassword')]
       }
     );
-    this.registerForm = this.formBuilder.group({
-      username : ['', [Validators.required]],
-      email : ['', Validators.required],
-      mobile : ['', Validators.required],
-      password : ['', Validators.required],
-      confirmPassword : ['', Validators.required]
-    });
+    // this.registerForm = this.formBuilder.group({
+    //   firstname : ['', [Validators.required]],
+    //   middlename : ['', [Validators.required]],
+    //   lastname : ['', [Validators.required]],
+    //   email : ['', Validators.required],
+    //   mobile : ['', Validators.required],
+    //   password : ['', Validators.required],
+    //   confirmPassword : ['', Validators.required]
+    // });
   }
 
   changeRegType() {
@@ -109,12 +124,14 @@ export class RegisterComponent implements OnInit {
   }
 
   signup() {
-    if (this.username === '' || this.mobile === '' || this.password === '' || this.email === '' || this.confirmPassword === '' || this.gender === '') {
-      this.toastr.error('', 'Please enter mandatory field!');
+    if (this.firstname === '' || this.middlename === '' || this.lastname === '' || this.mobile === '' || this.password === '' || this.email === '' || this.confirmPassword === '' || this.gender === '') {
+      this.toastr.error('', 'Please input form fields!');
     }else{
       this.submitted = true;
       let params = {
-        username: this.username,
+        firstname: this.firstname,
+        middlename: this.middlename,
+        lastname: this.lastname,
         email: this.email,
         role: 'user',
         gender: this.gender,
@@ -123,12 +140,9 @@ export class RegisterComponent implements OnInit {
       };
       if (this.form.invalid){
         this.commonService.createPatient(params).then((res) => {
-          // this.toastr.success('', 'Register successfully!');
-          // this.router.navigate(['/patient-register-step1']);
           this.verifyShow = true;
         })
         .catch((error)=>{
-          console.log(error)
           this.toastr.error('',error.response.data.errors[0].messages);
         });
       }
@@ -158,7 +172,9 @@ export class RegisterComponent implements OnInit {
     let code = {
       code : this.verify,
       user : {
-        username: this.username,
+        firstname: this.firstname,
+        middlename: this.middlename,
+        lastname: this.lastname,
         email: this.email,
         role: 'user',
         gender: this.gender,
@@ -171,7 +187,6 @@ export class RegisterComponent implements OnInit {
       this.router.navigate(['/home-index']);
     })
     .catch((error)=>{
-      console.log(error)
       this.toastr.error('',error.response.data.errors[0].messages);
       this.verifyShow = false;
       this.submitted = false;

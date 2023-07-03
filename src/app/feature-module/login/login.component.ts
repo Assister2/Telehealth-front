@@ -21,7 +21,6 @@ export class LoginComponent implements OnInit {
   loginForm : FormGroup | undefined;
   socialUser! : SocialUser;
   isLoggedin : boolean = false;
-
   isPatient: boolean = false;
   doctors: any = [];
   patients: any = [];
@@ -75,27 +74,29 @@ export class LoginComponent implements OnInit {
     this.isPatient = event.target.checked ? true : false;
   }
   login(email:any, password:any){
-    let params={
-      email : this.email,
-      password : this.password
-    }
-    this.submitted = true;
-    if (this.form.invalid){
-      this.commonService.login(params).then((res)=>{
-        this.toastr.success('', 'Login successfully!');
-        if(res.data.user.role == 'user'){
-          this.router.navigate(['/home-index']);
-        }
-        else{
-          this.router.navigate(['/home']);
-        }
-      })
-      .catch((error)=>{
-        console.log(error)
-        this.toastr.error('',error.response.data.message);
-      });;
-    }
-    
+    if(this.email === '' || this.password === '') {
+      this.toastr.error('', 'Please input form fields!');
+    } else {
+      let params={
+        email : this.email,
+        password : this.password
+      }
+      this.submitted = true;
+      if (this.form.invalid){
+        this.commonService.login(params).then((res)=>{
+          this.toastr.success('', 'Login successfully!');
+          if(res.data.user.role == 'user'){
+            this.router.navigate(['/home-index']);
+          }
+          else{
+            this.router.navigate(['/home']);
+          }
+        })
+        .catch((error)=>{
+          this.toastr.error('',error.response.data.message);
+        });;
+      }
+    }    
   }
 
   getDoctors() {

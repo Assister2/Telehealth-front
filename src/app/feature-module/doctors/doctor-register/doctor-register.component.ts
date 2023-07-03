@@ -12,14 +12,18 @@ import Validation from '../../login/validation';
 })
 export class DoctorRegisterComponent implements OnInit {
   form: FormGroup = new FormGroup({
-    username: new FormControl(''),
+    firstname: new FormControl(''),
+    middlename: new FormControl(''),
+    lastname: new FormControl(''),
     email: new FormControl(''),
     mobile: new FormControl(''),
     license: new FormControl(''),
     password: new FormControl(''),
     confirmPassword: new FormControl(''),
   });
-  username = '';
+  firstname = '';
+  middlename = '';
+  lastname = '';
   mobile = '';
   email = '';
   license = '';
@@ -58,12 +62,22 @@ export class DoctorRegisterComponent implements OnInit {
       }).trigger('blur');
     }
     this.form = this.formBuilder.group({
-      username: [
+      firstname: [
         '',
         [
           Validators.required,
-          Validators.minLength(6),
-          Validators.maxLength(20)
+        ]
+      ],
+      middlename: [
+        '',
+        [
+          Validators.required,
+        ]
+      ],
+      lastname: [
+        '',
+        [
+          Validators.required,
         ]
       ],
       email: ['', [Validators.required, Validators.email]],
@@ -93,7 +107,9 @@ export class DoctorRegisterComponent implements OnInit {
     }
   );
   this.registerForm = this.formBuilder.group({
-    username : ['', [Validators.required]],
+    firstname : ['', [Validators.required]],
+    middlename : ['', [Validators.required]],
+    lastname : ['', [Validators.required]],
     email : ['', Validators.required],
     mobile : ['', Validators.required],
     license : ['', Validators.required],
@@ -103,12 +119,14 @@ export class DoctorRegisterComponent implements OnInit {
   });
   }
   signup() {
-    if (this.username === '' || this.mobile === '' || this.password === '' || this.email === '' || this.license === '' || this.confirmPassword === '') {
-      this.toastr.error('', 'Please enter mandatory field!');
+    if (this.firstname === '' || this.middlename === '' || this.lastname === '' || this.mobile === '' || this.password === '' || this.email === '' || this.license === '' || this.confirmPassword === '') {
+      this.toastr.error('', 'Please input form fields!');
     } else {
       this.submitted = true;
       let params = {
-        username: this.username,
+        firstname: this.firstname,
+        middlename: this.middlename,
+        lastname: this.lastname,
         email: this.email,
         license: this.license,
         role: 'doctor',
@@ -119,13 +137,9 @@ export class DoctorRegisterComponent implements OnInit {
       };
       if(this.form.invalid)
       {
-        console.log("SIGNUP doctor", params)
         this.commonService.createDoctor(params).then((res) => {
-          // this.toastr.success('', 'Register successfully!');
-          // this.router.navigate(['/doctor-register-step1']);
           this.verifyShow = true;
         }).catch((error)=>{
-          console.log(error)
           this.toastr.error('',error.response.data.errors[0].messages);
         });
       }
@@ -147,7 +161,9 @@ export class DoctorRegisterComponent implements OnInit {
     let code = {
       code : this.verify,
       user : {
-        username: this.username,
+        firstname: this.firstname,
+        middlename: this.middlename,
+        lastname: this.lastname,
         email: this.email,
         license: this.license,
         role: 'doctor',
@@ -162,7 +178,6 @@ export class DoctorRegisterComponent implements OnInit {
       this.router.navigate(['/home']);
     })
     .catch((error)=>{
-      console.log(error)
       this.toastr.error('',error.response.data.errors[0].messages);
       this.verifyShow = false;
       this.submitted = false;
