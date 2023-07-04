@@ -21,13 +21,13 @@
 											formControlName="email" 
 											id="email" 
 											class="form-control floating" 
-											[ngClass]="{ 'is-invalid': (f['email'].touched || f['email'].dirty) && f['email'].errors }"
+											[ngClass]="{ 'is-invalid': (f['email'].touched || f['email'].dirty || submitted) && f['email'].errors }"
 											
 											[(ngModel)]="email"
 											>
 									<label class="focus-label">Email</label>
-									<div *ngIf=" (f['email'].touched || f['email'].dirty) && f['email'].errors" class="invalid-feedback">
-										<div *ngIf="f['email'].errors['required']">Email is required</div>
+									<div *ngIf=" (f['email'].touched || f['email'].dirty || submitted) && f['email'].errors" class="invalid-feedback">
+										<div *ngIf="f['email'].errors['required'] || submitted">Email is required</div>
 										<div *ngIf="f['email'].errors['email']">Email is invalid</div>
 									</div>	
 								</div>
@@ -37,12 +37,12 @@
 											id="password" 
 											class="form-control floating"
 											formControlName="password"
-											[ngClass]="{ 'is-invalid': (f['password'].touched || f['password'].dirty) && f['password'].errors }" 
+											[ngClass]="{ 'is-invalid': (f['password'].touched || f['password'].dirty || submitted) && f['password'].errors }" 
 											[(ngModel)]="password"
 											>
 									<label class="focus-label">Password</label>
-									<div *ngIf="(f['password'].touched || f['password'].dirty) && f['password'].errors" class="invalid-feedback">
-										<div *ngIf="f['password'].errors['required']">Password is required</div>
+									<div *ngIf="(f['password'].touched || f['password'].dirty || submitted) && f['password'].errors" class="invalid-feedback">
+										<div *ngIf="f['password'].errors['required'] || submitted">Password is required</div>
 										<div *ngIf="f['password'].errors['minlength']">
 										  Password must be at least 6 characters
 										</div>

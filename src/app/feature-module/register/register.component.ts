@@ -52,11 +52,7 @@ export class RegisterComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    if($('.floating').length > 0 ){
-      $('.floating').on('focus blur',  (e: { type: string; }) => {
-      $(this).parents('.form-focus').toggleClass('focused', (e.type === 'focus' || this.value.length > 0));
-      }).trigger('blur');
-    }
+    this.submitted = false;
     this.form = this.formBuilder.group({
         firstname: [
           '',
@@ -124,10 +120,11 @@ export class RegisterComponent implements OnInit {
   }
 
   signup() {
+    console.log(111111, this.submitted)
+    this.submitted = true;
     if (this.firstname === '' || this.middlename === '' || this.lastname === '' || this.mobile === '' || this.password === '' || this.email === '' || this.confirmPassword === '' || this.gender === '') {
       this.toastr.error('', 'Please input form fields!');
     }else{
-      this.submitted = true;
       let params = {
         firstname: this.firstname,
         middlename: this.middlename,

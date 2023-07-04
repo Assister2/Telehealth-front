@@ -23,12 +23,12 @@
                                         type="text"
                                         formControlName="firstname"
                                         class="form-control floating"
-                                        [ngClass]="{ 'is-invalid': (f['firstname'].touched || f['firstname'].dirty) && f['firstname'].errors} "
+                                        [ngClass]="{ 'is-invalid': (f['firstname'].touched || f['firstname'].dirty || submitted) && f['firstname'].errors} "
                                         [(ngModel)]="firstname"
                                     />
                                     <label class="focus-label">Firstname</label>
-                                    <div *ngIf=" (f['firstname'].touched || f['firstname'].dirty) && f['firstname'].errors " class="invalid-feedback">
-                                        <div *ngIf="f['firstname'].errors['required']">Firstname is required</div>
+                                    <div *ngIf=" (f['firstname'].touched || f['firstname'].dirty || submitted) && f['firstname'].errors " class="invalid-feedback">
+                                        <div *ngIf="f['firstname'].errors['required'] || submitted">Firstname is required</div>
                                         <div *ngIf="f['firstname'].errors['minlength']">
                                           Firstname must be at least 6 characters
                                         </div>
@@ -43,12 +43,12 @@
                                       type="text"
                                       formControlName="middlename"
                                       class="form-control floating"
-                                      [ngClass]="{ 'is-invalid': (f['middlename'].touched || f['middlename'].dirty) && f['middlename'].errors} "
+                                      [ngClass]="{ 'is-invalid': (f['middlename'].touched || f['middlename'].dirty || submitted) && f['middlename'].errors} "
                                       [(ngModel)]="middlename"
                                   />
                                   <label class="focus-label">Middlename</label>
-                                  <div *ngIf=" (f['middlename'].touched || f['middlename'].dirty) && f['middlename'].errors " class="invalid-feedback">
-                                      <div *ngIf="f['middlename'].errors['required']">Middlename is required</div>
+                                  <div *ngIf=" (f['middlename'].touched || f['middlename'].dirty || submitted) && f['middlename'].errors " class="invalid-feedback">
+                                      <div *ngIf="f['middlename'].errors['required'] || submitted">Middlename is required</div>
                                       <div *ngIf="f['middlename'].errors['minlength']">
                                         Middlename must be at least 6 characters
                                       </div>
@@ -63,12 +63,12 @@
                                         type="text"
                                         formControlName="lastname"
                                         class="form-control floating"
-                                        [ngClass]="{ 'is-invalid': (f['lastname'].touched || f['lastname'].dirty) && f['lastname'].errors} "
+                                        [ngClass]="{ 'is-invalid': (f['lastname'].touched || f['lastname'].dirty || submitted) && f['lastname'].errors} "
                                         [(ngModel)]="lastname"
                                     />
                                     <label class="focus-label">Lastname</label>
-                                    <div *ngIf=" (f['lastname'].touched || f['lastname'].dirty) && f['lastname'].errors " class="invalid-feedback">
-                                        <div *ngIf="f['lastname'].errors['required']">Lastname is required</div>
+                                    <div *ngIf=" (f['lastname'].touched || f['lastname'].dirty || submitted) && f['lastname'].errors " class="invalid-feedback">
+                                        <div *ngIf="f['lastname'].errors['required'] || submitted">Lastname is required</div>
                                         <div *ngIf="f['lastname'].errors['minlength']">
                                           Lastname must be at least 6 characters
                                         </div>
@@ -84,12 +84,12 @@
                                       formControlName="email" 
                                       id="email" 
                                       class="form-control floating" 
-                                      [ngClass]="{ 'is-invalid': (f['email'].touched || f['email'].dirty) && f['email'].errors }"
+                                      [ngClass]="{ 'is-invalid': (f['email'].touched || f['email'].dirty || submitted) && f['email'].errors }"
                                       [(ngModel)]="email"
                                       >
                                       <label class="focus-label">Email</label>
-                                      <div *ngIf="(f['email'].touched || f['email'].dirty) && f['email'].errors" class="invalid-feedback">
-                                    <div *ngIf="f['email'].errors['required']">Email is required</div>
+                                      <div *ngIf="(f['email'].touched || f['email'].dirty || submitted) && f['email'].errors" class="invalid-feedback">
+                                    <div *ngIf="f['email'].errors['required'] || submitted">Email is required</div>
                                     <div *ngIf="f['email'].errors['email']">Email is invalid</div>
                                   </div>	
                                 </div>
@@ -103,12 +103,13 @@
                                         id="mobile"
                                         [ngClass]="{'is-invalid': 
                                         (f['mobile'].touched ||
-                                         f['mobile'].dirty) &&
+                                         f['mobile'].dirty   || 
+                                         submitted) &&
                                          f['mobile'].errors }"
                                     >
                                     <label class="focus-label">Mobile Number</label>
-                                    <div *ngIf="(f['mobile'].touched || f['mobile'].dirty) && f['mobile'].errors" class="invalid-feedback">
-                                        <div *ngIf="f['mobile'].errors['required']">mobile is required</div>
+                                    <div *ngIf="(f['mobile'].touched || f['mobile'].dirty || submitted) && f['mobile'].errors" class="invalid-feedback">
+                                        <div *ngIf="f['mobile'].errors['required'] || submitted">mobile is required</div>
 										                    <div *ngIf="f['mobile'].errors['mobile']">mobile is invalid</div>
                                     </div>
                                 </div>
@@ -132,14 +133,15 @@
 									                <input 	
                                         type="password" 
                                         name="password" 
-                                        id="password" 
+                                        id="password"
+                                        [disabled]="form.invalid"
                                         class="form-control floating"
                                         formControlName="password"
-                                        [ngClass]="{ 'is-invalid': (f['password'].touched || f['password'].dirty) && f['password'].errors }" 
+                                        [ngClass]="{ 'is-invalid': (f['password'].touched || f['password'].dirty || submitted) && f['password'].errors }" 
                                         [(ngModel)]="password" />
                                   <label class="focus-label">Password</label>
-                                  <div *ngIf="(f['password'].touched || f['password'].dirty) && f['password'].errors" class="invalid-feedback">
-                                    <div *ngIf="f['password'].errors['required']">Password is required</div>
+                                  <div *ngIf="(f['password'].touched || f['password'].dirty || submitted) && f['password'].errors" class="invalid-feedback">
+                                    <div *ngIf="f['password'].errors['required'] || submitted">Password is required</div>
                                     <div *ngIf="f['password'].errors['minlength']">
                                       Password must be at least 6 characters
                                     </div>
@@ -154,14 +156,14 @@
                                       name="confirmPassword"
                                       formControlName="confirmPassword"
                                       class="form-control floating"
-                                      [ngClass]="{ 'is-invalid': (f['confirmPassword'].touched || f['confirmPassword'].dirty) && f['confirmPassword'].errors }"
+                                      [ngClass]="{ 'is-invalid': (f['confirmPassword'].touched || f['confirmPassword'].dirty || submitted) && f['confirmPassword'].errors }"
                                       [(ngModel)]="confirmPassword"
                                     />
                                     <label class="focus-label">confirm Password</label>
                                     <div
-                                      *ngIf="(f['confirmPassword'].touched || f['confirmPassword'].dirty) && f['confirmPassword'].errors"
+                                      *ngIf="(f['confirmPassword'].touched || f['confirmPassword'].dirty || submitted) && f['confirmPassword'].errors"
                                       class="invalid-feedback">
-                                      <div *ngIf="f['confirmPassword'].errors['required']">
+                                      <div *ngIf="f['confirmPassword'].errors['required'] || submitted">
                                         Confirm Password is required
                                       </div>
                                       <div *ngIf="f['confirmPassword'].errors['matching']">

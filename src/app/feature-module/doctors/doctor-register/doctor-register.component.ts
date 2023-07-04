@@ -18,6 +18,7 @@ export class DoctorRegisterComponent implements OnInit {
     email: new FormControl(''),
     mobile: new FormControl(''),
     license: new FormControl(''),
+    speciality: new FormControl(''),
     password: new FormControl(''),
     confirmPassword: new FormControl(''),
   });
@@ -56,11 +57,7 @@ export class DoctorRegisterComponent implements OnInit {
   ngOnInit(): void {
     this.getDoctors();
     this.getSpeciality();
-    if($('.floating').length > 0 ){
-      $('.floating').on('focus blur',  (e: { type: string; }) => {
-      $(this).parents('.form-focus').toggleClass('focused', (e.type === 'focus' || this.value.length > 0));
-      }).trigger('blur');
-    }
+    this.submitted = false;
     this.form = this.formBuilder.group({
       firstname: [
         '',
@@ -119,10 +116,10 @@ export class DoctorRegisterComponent implements OnInit {
   });
   }
   signup() {
-    if (this.firstname === '' || this.middlename === '' || this.lastname === '' || this.mobile === '' || this.password === '' || this.email === '' || this.license === '' || this.confirmPassword === '') {
+    this.submitted = true;
+    if (this.firstname === '' || this.middlename === '' || this.lastname === '' || this.mobile === '' || this.password === '' || this.email === '' || this.license === '' || this.speciality === '' || this.confirmPassword === '') {
       this.toastr.error('', 'Please input form fields!');
     } else {
-      this.submitted = true;
       let params = {
         firstname: this.firstname,
         middlename: this.middlename,

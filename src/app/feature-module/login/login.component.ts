@@ -74,6 +74,7 @@ export class LoginComponent implements OnInit {
     this.isPatient = event.target.checked ? true : false;
   }
   login(email:any, password:any){
+    this.submitted = true;
     if(this.email === '' || this.password === '') {
       this.toastr.error('', 'Please input form fields!');
     } else {
@@ -81,7 +82,6 @@ export class LoginComponent implements OnInit {
         email : this.email,
         password : this.password
       }
-      this.submitted = true;
       if (this.form.invalid){
         this.commonService.login(params).then((res)=>{
           this.toastr.success('', 'Login successfully!');
