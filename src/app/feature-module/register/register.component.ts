@@ -120,11 +120,10 @@ export class RegisterComponent implements OnInit {
   }
 
   signup() {
-    console.log(111111, this.submitted)
     this.submitted = true;
     if (this.firstname === '' || this.middlename === '' || this.lastname === '' || this.mobile === '' || this.password === '' || this.email === '' || this.confirmPassword === '' || this.gender === '') {
       this.toastr.error('', 'Please input form fields!');
-    }else{
+    } else{
       let params = {
         firstname: this.firstname,
         middlename: this.middlename,
