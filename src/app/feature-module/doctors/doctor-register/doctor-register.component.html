@@ -142,7 +142,7 @@
                                 class="custom-select form-control floating" 
                                 [ngClass]="{ 'is-invalid': (f['speciality'].touched || f['speciality'].dirty || submitted) && f['speciality'].errors}" 
                                 [(ngModel)]="speciality" >
-                                <option selected>Select Speciality</option>
+                                <option selected disabled>Select Speciality</option>
                                 <option [value]="specialities.speciality" *ngFor="let specialities of speciality_list" >
                                     {{ specialities.speciality}}
                                 </option>

@@ -183,7 +183,7 @@ export class RegisterComponent implements OnInit {
       this.router.navigate(['/home-index']);
     })
     .catch((error)=>{
-      this.toastr.error('',error.response.data.errors[0].messages);
+      this.toastr.error('', error.response.data.errors[0].messages);
       this.verifyShow = false;
       this.submitted = false;
     })
