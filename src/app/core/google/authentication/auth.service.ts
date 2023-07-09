@@ -15,14 +15,15 @@ export class AuthService {
   ) {}
   // Sign in with Google
   GoogleAuth() {
-    return this.AuthLogin(new GoogleAuthProvider());
+    const provider = new GoogleAuthProvider();
+    provider.setCustomParameters({ prompt: 'select_account' });
+    return this.AuthLogin(provider);
   }
   // Auth logic to run auth providers
   AuthLogin(provider: GoogleAuthProvider | firebase.auth.AuthProvider) {
     return this.afAuth
       .signInWithPopup(provider)
       .then((result: any) => {
-
         localStorage.setItem("displayName", result.user?.displayName);
         localStorage.setItem("email", result.user?.email);
         this.toastr.success('', 'You have been successfully logged in!');
