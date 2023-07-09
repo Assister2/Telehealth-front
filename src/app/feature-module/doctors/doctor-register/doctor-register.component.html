@@ -101,7 +101,7 @@
                                 id="mobile"
                                 [ngClass]="{'is-invalid': (f['mobile'].touched || f['mobile'].dirty || submitted) && f['mobile'].errors}"
                             >
-                            <label class="focus-label">Mobile Number</label>
+                            <label class="focus-label">Whatsapp Number</label>
                             <div *ngIf="(f['mobile'].touched || f['mobile'].dirty || submitted) && f['mobile'].errors" class="invalid-feedback">
                                 <div *ngIf="f['mobile'].errors['required'] || submitted">mobile is required</div>
                                 <div *ngIf="f['mobile'].errors['mobile']">mobile is invalid</div>
@@ -147,6 +147,7 @@
                                     {{ specialities.speciality}}
                                 </option>
                             </select>
+                            <label class="focus-label">Speciality</label>
                             <div *ngIf="(f['speciality'].touched || f['speciality'].dirty || submitted) && f['speciality'].errors" class="invalid-feedback">
                                 <div *ngIf="f['speciality'].errors['required'] || submitted">Speciality is required</div>
                             </div>
