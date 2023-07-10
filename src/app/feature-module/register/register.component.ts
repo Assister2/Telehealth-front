@@ -124,23 +124,27 @@ export class RegisterComponent implements OnInit {
     if (this.firstname === '' || this.middlename === '' || this.lastname === '' || this.mobile === '' || this.password === '' || this.email === '' || this.confirmPassword === '' || this.gender === '') {
       this.toastr.error('', 'Please input form fields!');
     } else{
-      let params = {
-        firstname: this.firstname,
-        middlename: this.middlename,
-        lastname: this.lastname,
-        email: this.email,
-        role: 'user',
-        gender: this.gender,
-        phone: this.mobile,
-        password: this.password
-      };
-      if (this.form.invalid){
-        this.commonService.createPatient(params).then((res) => {
-          this.verifyShow = true;
-        })
-        .catch((error)=>{
-          this.toastr.error('',error.response.data.errors[0].messages);
-        });
+      if(this.password != this.confirmPassword) {
+        this.toastr.error('', "Confirm password doesn't match");
+      } else {
+        let params = {
+          firstname: this.firstname,
+          middlename: this.middlename,
+          lastname: this.lastname,
+          email: this.email,
+          role: 'user',
+          gender: this.gender,
+          phone: this.mobile,
+          password: this.password
+        };
+        if (this.form.invalid){
+          this.commonService.createPatient(params).then((res) => {
+            this.verifyShow = true;
+          })
+          .catch((error)=>{
+            this.toastr.error('',error.response.data.errors[0].messages);
+          });
+        }
       }
     }
   }
