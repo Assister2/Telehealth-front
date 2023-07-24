@@ -132,15 +132,13 @@ export class DoctorRegisterComponent implements OnInit {
         phone: this.mobile,
         password: this.password
       };
-      if(this.form.invalid)
-      {
+      if(this.form.invalid) {
         this.commonService.createDoctor(params).then((res) => {
           this.verifyShow = true;
         }).catch((error)=>{
           this.toastr.error('',error.response.data.errors[0].messages);
         });
       }
-      
     }
   }
   getDoctors() {

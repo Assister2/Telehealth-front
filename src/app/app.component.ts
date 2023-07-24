@@ -17,7 +17,7 @@ import {
 import { Location } from '@angular/common';
 
 import { AttributeService, CommonService } from './core/service/service.index';
-
+import { Globals } from './globals';
 
 @Component({
   selector: 'app-root',
@@ -31,19 +31,24 @@ export class AppComponent implements OnInit {
   
   constructor(
     private activeRoute: ActivatedRoute,
-    public Router: Router,
+    public router: Router,
     location: Location,
     public commonServic: CommonService,
     public attributeService: AttributeService
 
   ) {}
 
-  ngOnInit() {
+  private tokenExpired(token: string) {
+    const expiry = (JSON.parse(atob(token.split('.')[1]))).exp;
+    return (Math.floor((new Date).getTime() / 1000)) >= expiry;
+  }
 
-    
-    
+  ngOnInit() {   
+    const token = localStorage.getItem('accessToken') || '';
     // Content div min height set
-
+    if (this.tokenExpired(token)) {
+      this.router.navigate(['/login']);
+    } 
     function resizeInnerDiv() {
       var height: any = $(window).height();
       var header_height: any = $(".header").height();
@@ -62,7 +67,7 @@ export class AppComponent implements OnInit {
       resizeInnerDiv();
     }
     window.dispatchEvent(new Event('resize'))
-    this.Router.events.subscribe((event: Event) => {
+    this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationEnd) {
         $('html').removeClass('menu-opened');
         $('.sidebar-overlay').removeClass('opened');
@@ -70,6 +75,7 @@ export class AppComponent implements OnInit {
       }
     });
     this.attributeService.usersideMenuresponsive()
+    Globals.axiosInstance.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('accessToken');
   }
 
   ngAfterViewChecked() {

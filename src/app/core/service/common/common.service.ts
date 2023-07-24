@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { BehaviorSubject } from 'rxjs';
-import axios from 'axios';
+
+import { Globals } from 'src/app/globals';
 @Injectable({
   providedIn: 'root'
 })
@@ -55,10 +56,14 @@ export class CommonService {
   ];
 
   messages:any = '';
-  SERVER_URL: string = 'http://localhost:3000/api/v1/';
   public message: BehaviorSubject<String> = new BehaviorSubject<String>('');
+  SERVER_URL: string;
+  axiosInstance: any;
+
   constructor(public http: HttpClient) {
     this.message = new BehaviorSubject(this.messages);
+    this.SERVER_URL = Globals.SERVER_URL;
+    this.axiosInstance = Globals.axiosInstance;
   }
 
   nextmessage(data:any) {
@@ -137,12 +142,12 @@ export class CommonService {
   }
 
   createDoctor(data:any) {
-    return axios.post(`${this.SERVER_URL + 'auth/register'}`, data);
+    return this.axiosInstance.post(`${this.SERVER_URL + 'auth/register'}`, data);
   }
 
   createPatient(data:any) {
     // return this.http.post(`${this.SERVER_URL + 'patients'}`, data);
-    return axios.post(`${this.SERVER_URL + 'auth/register'}`, data);
+    return this.axiosInstance.post(`${this.SERVER_URL + 'auth/register'}`, data);
   }
 
   getPatientDetails(id:any) {
@@ -252,12 +257,16 @@ export class CommonService {
     return this.http.delete(`${this.SERVER_URL + 'pharmacy'}/${id}`);
   }
   login (data:any){
-    return axios.post(`${this.SERVER_URL + 'auth/login'}`, data);
+    return this.axiosInstance.post(`${this.SERVER_URL + 'auth/login'}`, data);
   }
   getSpeciality_1(){
-    return axios.get(`${this.SERVER_URL + 'specialities'}`);
+    return this.axiosInstance.get(`${this.SERVER_URL + 'specialities'}`);
   }
   sendCode(data:any){
-    return axios.post(`${this.SERVER_URL+ 'auth/verify'}`,data);
+    return this.axiosInstance.post(`${this.SERVER_URL + 'auth/verify'}`, data);
+  }
+
+  getbasicinfo(data: any) {
+    return this.axiosInstance.get(`${this.SERVER_URL + 'users/profile'}`, data)
   }
 }

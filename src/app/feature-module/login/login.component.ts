@@ -6,6 +6,7 @@ import { CommonService } from 'src/app/core/service/service.index';
 import { GoogleLoginProvider, SocialUser,SocialAuthService } from 'angularx-social-login';
 import { AuthService } from '../../core/google/authentication/auth.service';
 
+import { Globals } from 'src/app/globals';
 import Validation from './validation';
 
 @Component({
@@ -84,6 +85,9 @@ export class LoginComponent implements OnInit {
       }
       if (this.form.invalid){
         this.commonService.login(params).then((res)=>{
+          localStorage.setItem('userinfo', JSON.stringify(res.data.user));
+          localStorage.setItem('accessToken', res.data.token.accessToken);
+          Globals.axiosInstance.defaults.headers.common['Authorization'] = 'Bearer ' + res.data.token.accessToken
           this.toastr.success('', 'Login successfully!');
           if(res.data.user.role == 'user'){
             this.router.navigate(['/home-index']);

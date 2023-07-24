@@ -4,3 +4,4 @@ export * from './common/common.service';
 export * from '../guard/auth/authenticate.guard';
 export * from '../guard/admin/admin.guard';
 export * from '../service/attribute/attribute.service';
+export * from '../service/doctor/doctor.service';
