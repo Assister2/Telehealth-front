@@ -6,10 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./available-timings.component.css']
 })
 export class AvailableTimingsComponent implements OnInit {
-
+  userId = null;
+  date = new Date;
   constructor() { }
 
   ngOnInit(): void {
   }
+  getWeekday() {
 
+  }
 }

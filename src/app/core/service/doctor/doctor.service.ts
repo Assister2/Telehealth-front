@@ -19,4 +19,12 @@ export class DoctorService {
             headers: {'Content-Type': 'multipart/form-data'}
         });
     }
+    getScheduleTiming(
+        id:any , 
+        ){
+        return this.axiosInstance.get(`${this.SERVER_URL + 'users/getSchedule'}`, id)
+    }
+    addScheduleTiming(data: any){
+        return this.axiosInstance.get(`${this.SERVER_URL + 'users/' +data.userId + '/addSchedule'}`,data)
+    }
 }

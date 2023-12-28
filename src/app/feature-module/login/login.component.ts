@@ -86,6 +86,8 @@ export class LoginComponent implements OnInit {
       if (this.form.invalid){
         this.commonService.login(params).then((res)=>{
           localStorage.setItem('userinfo', JSON.stringify(res.data.user));
+          // console.log('ADSDSA',res.data);
+          // localStorage.setItem('scheduleData', JSON.stringify(res.data.))
           localStorage.setItem('accessToken', res.data.token.accessToken);
           Globals.axiosInstance.defaults.headers.common['Authorization'] = 'Bearer ' + res.data.token.accessToken
           this.toastr.success('', 'Login successfully!');
